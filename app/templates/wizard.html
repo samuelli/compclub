@@ -1,0 +1,44 @@
+{% extends "index.html" %}
+
+{% block titlecontent %}HS Courses{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div class="well">
+		<form class="form-vertical" action="/wizard" method="post">
+			<legend>Tell us a bit more about yourself</legend>
+			<div class="alert alert-error" style="display:none" id="wizardError">
+				Please fill in all fields.
+			</div>
+			<fieldset>
+				<label>What year are you in?</label>
+				<div class="control-group" id="year">
+					<ul style="list-style-type:none">
+						<li><input type="radio" name="year" value="7">Year 7</li>
+						<li><input type="radio" name="year" value="8">Year 8</li>
+						<li><input type="radio" name="year" value="9">Year 9</li>
+						<li><input type="radio" name="year" value="10">Year 10</li>
+						<li><input type="radio" name="year" value="11">Year 11</li>
+						<li><input type="radio" name="year" value="12">Year 12</li>
+					</ul>
+				</div>
+				<label>What level of programming experience do you have?</label>
+				<div class="control-group" id="experience">
+					<ul style="list-style-type:none">
+						<li><input type="radio" name="experience" value="1">Beginner - I've done very little or no programming before</li>
+						<li><input type="radio" name="experience" value="2">Intermediate - I've done some programming before</li>
+						<li><input type="radio" name="experience" value="3">Expert - I've done lots of programming before but I'm keen to do some more programming!</li>
+					</ul>
+				</div>
+
+			</fieldset>
+			<center>
+				<a class="btn btn-secondary btn-large" href="javascript:history.go(-1)" type="button" style="margin-right: 70px">Back</a>
+				<input class="btn btn-primary btn-large" id="findClassBtn" type="submit" value="Find me a course!">
+			</center>
+		</form>
+	</div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,93 @@
+{% extends "index.html" %}
+
+{% block titlecontent %}HS Courses{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+  <div class="well">
+
+    <h2>Who are we?</h2>
+
+    <span id="aboutShort">
+      <div style="float:right"><a href="#" id="aboutExpand">Read more <i class="icon-arrow-down" style="vertical-align:-2px"></i></a></div>
+      Started by the students of UNSW Computing, the High School Computing Club...
+    </span>
+
+    <div id="aboutLong" class="row-fluid" style="display:none">
+      <div class="video span6"><iframe width="560" height="315" src="http://www.youtube.com/embed/nKIu9yen5nc" frameborder="0" allowfullscreen></iframe></div>
+      <div class="span6" style="padding: 15px">
+        <p>
+           Started by the students of UNSW Computing, the High School Computing
+           Club is an initiative established to help students explore the depth and
+           breath of Computer Science.
+        </p>
+        <p>
+           From competitions to computer games, the Computing Club hopes to spark
+           the interest of students who are just starting their journey with Computing
+           while also providing depth for students that have excelled beyond what is
+           taught in the class room.
+        </p>
+        <p>
+           We believe anyone can learn how to code, and that everyone should at
+           least give it a go. Our mentors have come from varying Computing backgrounds,
+           with some having learnt it at high school and others only picking it up at
+           university.
+        </p>
+        <p>
+           Computer Science is a broad topic with fields in Robotics, Artificial intelligence,
+           Networks, Security, Computer Graphics, Game design and many more. We hope to
+           show students from all disciplines how a knowledge of Computing can help them
+           in the future.
+        </p>
+
+        <div style="float:right"><a href="#" id="aboutHide">Hide <i class="icon-arrow-up" style="vertical-align:-2px"></i></a></div>
+      </div>
+    </div>
+  </div>
+  <div id="myCarousel" class="carousel slide hero-unit">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+    </ol>
+    <!-- Carousel items -->
+    <div class="carousel-inner">
+      <div class="active item">
+        <div style="height:500px;overflow:hidden"><a href="/about"><img src="/assets/img/hs-splash-small.jpg"></a></div>
+        <div class="carousel-caption">
+          <h4>High School Computing Club</h4>
+          <a href="/about">
+            <p>
+              We organise and run computing events for high school students. Click to find out more about us.
+            </p>
+          </a>
+        </div>
+      </div>
+      <div class="item">
+        <div style="height:500px;overflow:hidden"><a href="/courses/?id=1"><img src="/assets/img/hs-intro.jpg" width="100%"></a></div>
+        <div class="carousel-caption">
+          <a href="/courses/?id=1">
+            <h4>Intro to programming - Computing 1</h4>
+            <p>
+              A course that teaches you the fundamentals of computer programming,
+              starting April 28th. Click to learn more.
+            </p>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Carousel nav -->
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+  </div>
+
+
+  <center>
+    <div class="row-fluid">
+      <div class="span6 mainButtons"><a class="btn btn-large btn-block btn-primary" href="/wizard" type="button">Find the right course</button></a></div>
+      <div class="span6 mainButtons"><a class="btn btn-large btn-block btn-success" href="/courses" type="button">See all available courses</button></a></div>
+    </div>
+  </center>
+</div>
+{% endblock %}

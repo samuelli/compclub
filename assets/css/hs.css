@@ -1,0 +1,91 @@
+.heading img {
+	padding: 10px 30px;
+	border-right: dashed 1px #BBB;
+	margin-right: 30px;
+}
+
+.container .well {
+	background-color: white;
+}
+
+.heading h1 {
+	margin-bottom: 9px;
+	font-weight: 400;
+	letter-spacing: -1px;
+	line-height: 1;
+	color: #0B61A4;
+}
+
+footer {
+	font-weight: 300;
+	font-size: 0.9em;
+	margin: 20px;
+}
+
+body {
+	font-weight: 300;
+	line-height: 1.6em;
+	font-size: 16px;
+	color: #555;
+}
+
+b, strong {
+	font-weight: 500;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 300;
+}
+
+.carousel {
+	min-height: 500px;
+	padding: 0px;
+	overflow: hidden;
+}
+
+.carousel {
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}
+
+.mainButtons {
+	padding: 5px 100px;
+}
+
+.mainButtons a {
+	font-size: 1.5em;
+	padding: 1em;
+}
+
+form legend {
+	font-weight: 400;
+}
+
+form label {
+	font-size: 1.2em;
+	font-weight: 300;
+	margin: 20px 0;
+}
+
+form ul li {
+	margin: 15px 0;
+}
+
+form input[type="radio"] {
+	margin-right: 8px;
+	vertical-align: 1px;
+}
+
+.errorList {
+	list-style: none;
+	float:right;
+}
+
+.video {
+	padding: 10px;
+}
+
+.heading img {
+	min-width: 30px;
+}

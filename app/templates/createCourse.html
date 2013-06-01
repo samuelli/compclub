@@ -1,0 +1,54 @@
+{% extends "index.html" %}
+
+{% block titlecontent %}Admin{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div class="well">
+		<form class="form-vertical" action="/admin/create" method="post">
+			<legend>Create a new course</legend>
+			<fieldset>
+				<label>Title</label>
+                <input type="text" name="title" maxlength="200">
+
+                <label>From year</label>
+                <input type="number" name="from_year" min="5" max="12">
+
+                <label>To year</label>
+                <input type="number" name="to_year" min="5" max="12">
+
+                <label>Description</label>
+                <textarea name="description" cols="100" rows="5"></textarea>
+
+                <label>Last day for rego</label>
+                <input type="date" name="rego_date">
+
+                <label>Min level</label>
+
+                <select name="minlevel">
+                    <option value="" selected="selected">---------</option>
+                    <option value="1">Beginner</option>
+                    <option value="2">Intermediate</option>
+                    <option value="3">Expert</option>
+                </select>
+
+                <label>Max level</label>
+
+                <select name="maxlevel">
+                    <option value="" selected="selected">---------</option>
+                    <option value="1">Beginner</option>
+                    <option value="2">Intermediate</option>
+                    <option value="3">Expert</option>
+                </select>
+			</fieldset>
+			<center>
+				<a class="btn btn-secondary btn-large" href="javascript:history.go(-1)" type="button" style="margin-right: 70px">Back</a>
+				<input class="btn btn-primary btn-large" type="submit" value="Create course">
+			</center>
+		</form>
+	</div>
+</div>
+
+
+{% endblock %}

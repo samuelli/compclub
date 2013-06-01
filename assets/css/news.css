@@ -1,0 +1,103 @@
+/*
+Credit: Sam Li
+Author: Chris Manouvrier
+
+*/
+
+article {
+	padding-left: 20px;
+	border-left:1px solid #333;
+	font-family: 'Open Sans',sans-serif;
+	font-weight: 300;
+	font-size: 11pt;
+	line-height: 16pt;
+	color: #666;
+	margin: 10px 0px;
+	margin-bottom: 20px;
+
+}
+
+
+article header {
+	font-size: 24px;
+}
+
+article header h3 {
+	color: #333;
+	font-size: 24px;
+	font-weight: normal;
+	display:inline;
+	padding:0px;
+	margin: 0 5px 5px 0;
+}
+
+article header h3 a {
+	color: #333;
+	text-decoration:none;
+}
+
+article header label{
+	font-size: 11px;
+	line-height: 11px;
+	background:#333;
+	color:#fff;
+	display:inline-block;
+	padding: 2px 5px;
+	margin: 0 5px;
+	vertical-align: 5px;
+	cursor: pointer;
+}
+
+article p {
+	color: #666;
+	margin: 0 0 8px 0;
+
+}
+
+article p a{
+	text-decoration:none;
+	color:#36C;
+}
+
+article.yellow {
+	border-left-color: #FFA400;
+} 
+
+article.yellow header label{
+	background: #FFA400;
+}
+
+article.red {
+	border-left-color: #F04D4D;
+
+}
+
+article.red header label{
+	background: #F04D4D;
+}
+
+article.purple {
+	border-left-color: #9702A7;    
+} 
+
+article.purple header label{
+	background: #9702A7;
+}
+
+article.green {
+	border-left-color: #00BD39;
+} 
+
+article.green header label{
+	background: #00BD39;
+}
+
+article.blue {
+	border-left-color:  #4D90F0;    
+}
+
+article.blue header label{
+	background: #4D90F0;
+}
+
+

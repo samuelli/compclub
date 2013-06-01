@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+
+{% block titlecontent %}HS Courses{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="well">
+        <h2>Regos for {{ course.title }}</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>High school</th>
+                    <th>Emergency contact name</th>
+                    <th>Emergency contact number</th>
+                    <th>Laptop</th>
+                    <th>Year</th>
+                    <th>Level</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in regos %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ r.full_name }}</td>
+                        <td>{{ r.gender }}</td>
+                        <td>{{ r.email }}</td>
+                        <td>{{ r.highschool }}</td>
+                        <td>{{ r.emergency_contact_name }}</td>
+                        <td>{{ r.emergency_contact_number }}</td>
+                        <td>{{ r.laptop }}</td>
+                        <td>{{ r.year }}</td>
+                        <td>{{ r.level }}</td>
+                        <td>{{ r.created }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+

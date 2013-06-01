@@ -1,0 +1,51 @@
+a
+{
+   text-decoration: none;
+   color: #36C;
+}
+
+#socannounce
+{
+   border: 1px solid #BBB;
+   width: 90%;
+   margin: 0 auto;
+}
+
+#socannounceHeader
+{
+   background: #F0F0F0;
+   font: 13px Courier;
+   text-align: right;
+   padding: 20px 50px 20px;
+   border-bottom: 1px solid #BBB;
+   margin: 0px;
+   color:#3366CC;
+}
+
+#socannounceHeader a {
+	text-decoration: none;
+	color:#3366CC;
+}
+
+#socannounceArticles {
+	padding: 20px;
+}
+
+.footer
+{
+   border-top: 1px solid #BBB;
+   background-color: #DDD;
+   margin: 0;
+   padding: 0 20px 10px;
+}
+
+.footerText
+{
+   color: #666;
+   font: 11px Arial;
+}
+
+.icon
+{
+   margin-right: 5px;
+}
