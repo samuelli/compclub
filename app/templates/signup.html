@@ -7,8 +7,8 @@
 <div class="container">
 	<div class="well">
 		<form class="form-vertical" action="/signup" method="post">
-			<legend>Signup for </legend>
-			<input type="hidden" name="course" value="{{ id }}" />
+			<legend>Signup for {{ course.title }}</legend>
+			<input type="hidden" name="course" value="{{ course.key().id() }}" />
 			<div class="alert alert-error" style="display:none" id="regoError">
 				Please fill in all fields.
 			</div>

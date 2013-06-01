@@ -44,10 +44,11 @@ class courses(webapp2.RequestHandler):
 
 class signup(webapp2.RequestHandler):
      def get(self):
+        course = Course.get_by_id(int(self.request.get('id')))
         template_values = {
             'year': self.request.get('year'),
             'level': self.request.get('level'),
-            'id': self.request.get('id'),
+            'course': course
         }
         template = jinja_environment.get_template('signup.html')
         self.response.out.write(template.render(template_values))
