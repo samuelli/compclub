@@ -63,3 +63,20 @@ class rego(webapp2.RequestHandler):
 
         template = jinja_environment.get_template('regos.html')
         self.response.out.write(template.render(template_values))
+
+class update(webapp2.RequestHandler):
+    def post(self, course):
+        c = Course.get_by_id(int(course))
+
+        c.description = self.request.get('desc')
+        c.put()
+
+        q = db.GqlQuery("SELECT * FROM Course LIMIT 10")
+        template_values = {
+            'courses': q,
+            'size': q.count(),
+            'users': users,
+        }
+
+        template = jinja_environment.get_template('courses.html')
+        self.response.out.write(template.render(template_values))

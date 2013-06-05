@@ -26,6 +26,7 @@ app = webapp2.WSGIApplication([
     ('/signup', main.signup),
     ('/about', main.about),
     ('/courses', main.courses),
+    (r'/courses/(\d+)', main.course),
     ('/wizard', main.wizard),
 ], debug=True)
 

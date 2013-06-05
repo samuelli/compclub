@@ -22,7 +22,15 @@
 
 				</div>
 				<h2>{{ c.title }}</h2>
-				{{ c.description|safe }}
+				{% if users and users.is_current_user_admin() %}
+                <form method="POST" action="/admin/update/{{ c.key().id() }}">
+                    <textarea name="desc">{{ c.description|safe }}</textarea>
+                    <input class="btn btn-primary" type="submit" value="Save">
+                </form>
+                {% else %}
+                    {{ c.description|safe }}
+                {% endif %}
+
 
 			</div>
 		{% endfor %}

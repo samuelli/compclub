@@ -42,6 +42,16 @@ class courses(webapp2.RequestHandler):
         template = jinja_environment.get_template('courses.html')
         self.response.out.write(template.render(template_values))
 
+class course(webapp2.RequestHandler):
+    def get(self, id):
+        c = Course.get_by_id(int(id))
+        template_values = {
+            'courses': [c],
+            'size': 1,
+        }
+        template = jinja_environment.get_template('courses.html')
+        self.response.out.write(template.render(template_values))
+
 class signup(webapp2.RequestHandler):
      def get(self):
         course = Course.get_by_id(int(self.request.get('id')))
