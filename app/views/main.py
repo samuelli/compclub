@@ -4,6 +4,7 @@ import os
 from app.models.models import Course, Registration
 from google.appengine.ext import db
 from google.appengine.api import users
+from google.appengine.api import mail
 
 import httplib
 import urllib
@@ -76,6 +77,24 @@ class signup(webapp2.RequestHandler):
         r.year = int(self.request.get('year'))
         r.gender = self.request.get('gender')
         r.put()
+
+        # Send an email to them
+        message = mail.EmailMessage(sender="UNSW Comp Club <admin@compclub.com.au>",
+                            subject="Thank you for signing up to " + course.title + "!")
+
+        message.to = r.full_name + " <" + r.email + ">"
+        message.body = """
+Dear """ + r.full_name + """,
+
+Welcome to UNSW Computing Club! You've successfully signed up to """ + course.title + """. An email with
+additonal information shortly before the module begins.
+
+Should you have any questions, feel free to contact us at team@compclub.com.au.
+
+UNSW Computing Club
+        """
+
+        message.send()
 
         template_values = {
             'email': r.email,
