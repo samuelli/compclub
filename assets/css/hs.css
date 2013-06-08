@@ -37,6 +37,17 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 300;
 }
 
+.carousel {
+	min-height: 500px;
+	padding: 0px;
+	overflow: hidden;
+}
+
+.carousel {
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}
 
 .mainButtons {
 	padding: 5px 100px;
