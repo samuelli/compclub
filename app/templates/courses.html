@@ -8,15 +8,50 @@
     {% if users and users.is_current_user_admin() %}
         <a href="create" type="button" class="btn btn-primary">Create a new course</a>
     {% endif %}
-
 	{% if size > 0 %}
 		{% for c in courses %}
+        {% if not c.passed %}
+
 			<div class="well">
 				<div style="float:right; padding: 20px">
                     {% if users and users.is_current_user_admin() %}
                         <a href="/admin/regos/{{ c.key().id() }}" class="btn btn-success" type="button">Display registrations</a>
                     {% else %}
-                        <a href="/signup?id={{ c.key().id() }}&year={{ year }}&level={{ level }}" class="btn btn-success" type="button">Register</a>
+                        {% if c.passed %}
+                            <button class="btn btn-danger" disabled="true">Closed</button>
+                        {% else %}
+                            <a href="/signup?id={{ c.key().id() }}&year={{ year }}&level={{ level }}" class="btn btn-success" type="button">Register</a>
+                        {% endif %}
+
+                    {% endif %}
+
+
+				</div>
+				<h2>{{ c.title }}</h2>
+				{% if users and users.is_current_user_admin() %}
+                <form method="POST" action="/admin/update/{{ c.key().id() }}">
+                    <textarea name="desc">{{ c.description|safe }}</textarea>
+                    <input class="btn btn-primary" type="submit" value="Save">
+                </form>
+                {% else %}
+                    {{ c.description|safe }}
+                {% endif %}
+			</div>
+        {% endif %}
+		{% endfor %}
+        {% for c in courses %}
+        {% if c.passed %}
+			<div class="well">
+				<div style="float:right; padding: 20px">
+                    {% if users and users.is_current_user_admin() %}
+                        <a href="/admin/regos/{{ c.key().id() }}" class="btn btn-success" type="button">Display registrations</a>
+                    {% else %}
+                        {% if c.passed %}
+                            <button class="btn btn-danger" disabled="true">Closed</button>
+                        {% else %}
+                            <a href="/signup?id={{ c.key().id() }}&year={{ year }}&level={{ level }}" class="btn btn-success" type="button">Register</a>
+                        {% endif %}
+
                     {% endif %}
 
 
@@ -33,10 +68,13 @@
 
 
 			</div>
+        {% endif %}
 		{% endfor %}
 	{% else %}
 		<center><p style="font-size: 28px; margin: 40px">No matching courses found. <a href="/courses">Show me all the courses anyway.</a></p></center>
 	{% endif %}
+
+
 </div>
 {% endblock %}
 

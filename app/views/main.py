@@ -5,6 +5,7 @@ from app.models.models import Course, Registration
 from google.appengine.ext import db
 from google.appengine.api import users
 from google.appengine.api import mail
+import datetime
 
 import httplib
 import urllib
@@ -36,8 +37,14 @@ class courses(webapp2.RequestHandler):
             q = db.GqlQuery("SELECT * FROM Course LIMIT 10 WHERE title = :1", course)
         else:
             q = db.GqlQuery("SELECT * FROM Course LIMIT 10")
+
+        courses = []
+        for c in q:
+            c.passed = c.rego_date < datetime.datetime.now()
+            courses.append(c)
+
         template_values = {
-            'courses': q,
+            'courses': courses,
             'size': q.count(),
         }
         template = jinja_environment.get_template('courses.html')
@@ -46,6 +53,8 @@ class courses(webapp2.RequestHandler):
 class course(webapp2.RequestHandler):
     def get(self, id):
         c = Course.get_by_id(int(id))
+        c.passed = c.rego_date < datetime.datetime.now()
+
         template_values = {
             'courses': [c],
             'size': 1,
@@ -83,6 +92,7 @@ class signup(webapp2.RequestHandler):
                             subject="Thank you for signing up to " + course.title + "!")
 
         message.to = r.full_name + " <" + r.email + ">"
+        message.bcc = "champs@compclub.com.au"
         message.body = """
 Dear """ + r.full_name + """,
 
@@ -113,6 +123,7 @@ class wizard(webapp2.RequestHandler):
         courses = []
         for c in q:
             if c.from_year <= year and year <= c.to_year and c.minlevel <= experience and experience <= c.maxlevel:
+                c.passed = c.rego_date < datetime.datetime.now()
                 courses.append(c)
 
         template_values = {
