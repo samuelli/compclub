@@ -97,7 +97,7 @@ class signup(webapp2.RequestHandler):
 Dear """ + r.full_name + """,
 
 Welcome to UNSW Computing Club! You've successfully signed up to """ + course.title + """. An email with
-additional information shortly before the module begins.
+additional information will be sent to you shortly before the module begins.
 
 Should you have any questions, feel free to contact us at team@compclub.com.au.
 
