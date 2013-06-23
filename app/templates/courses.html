@@ -9,47 +9,6 @@
         <a href="create" type="button" class="btn btn-primary">Create a new course</a>
     {% endif %}
 
-    <div class="well">
-        <div style="float:right; padding: 20px">
-                <a href="http://www.computing.unsw.edu.au/school-programs/winter-school/" class="btn btn-success" type="button">More info</a>
-        </div>
-        <h2>Winter School 2013</h2>
-        <p>A series of modules will be offered to high school students between July 9-12, 2013. A variety of modules are run
-        targeted at different levels of programming skills. Winter School is FREE to all students. More information can
-        be found on the  <a href="http://www.computing.unsw.edu.au/school-programs/winter-school/">CSE Winter School website</a>.</p>
-    <table class="table table-bordered">
-    <tbody>
-        <tr>
-            <th width="10%" style="vertical-align: middle; ">Level</th>
-            <th width="28%" style="vertical-align: middle; " colspan="2">Tuesday <br>
-            9th July</th>
-            <th width="14%" style="vertical-align: middle; ">Wednesday<br>
-            10th July</th>
-            <th width="28%" style="vertical-align: middle; " colspan="2">Thursday<br>
-            11th July</th>
-            <th width="14%" style="vertical-align: middle; ">Friday<br>
-            12th July</th>
-        </tr>
-        <tr>
-            <td style="vertical-align: middle; "><span><strong>None</strong></span></td>
-            <td style="vertical-align: middle; ">Introduction to Programming</td>
-            <td style="vertical-align: middle; ">Smartphone Sensors</td>
-            <td style="vertical-align: middle; ">How The Internet Works</td>
-            <td style="vertical-align: middle; ">Basic web design using HTML &amp; CSS</td>
-            <td style="vertical-align: middle; ">Overview of Financial Systems</td>
-            <td style="vertical-align: middle; ">Introduction to game maker<br></td>
-        </tr>
-        <tr>
-            <td style="vertical-align: middle; "><span> <span><strong>Some Programming Experience</strong></span></span></td>
-            <td style="vertical-align: middle; " colspan="2">Relational Database Design and Implementation</td>
-            <td style="vertical-align: middle; ">Practical Programming in C<br></td>
-            <td colspan="2" style="vertical-align: middle; ">Advanced web design using Javascript &amp; PHP</td>
-            <td style="vertical-align: middle; ">ProgComp for Newbies</td>
-        </tr>
-    </tbody>
-</table>
-    </div>
-
 	{% if size > 0 %}
 		{% for c in courses %}
         {% if not c.passed %}
