@@ -1,0 +1,34 @@
+{% extends "index.html" %}
+
+{% block titlecontent %}HS Courses{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div class="well">
+		<form class="form-vertical" action="/signup" method="post">
+			<legend>Feedback for {{ course_title }}</legend>
+			<input type="hidden" name="course" value="{{ course_title }}" />
+			<fieldset>
+                The aims of this module were clear to me
+                The module was challenging and interesting
+                The presenter was effective in presenting this module
+                I would recommend this module to my friends next year
+                Overall, I was satisfied with the quality of this module
+
+				<label>The best part of the module:</label>
+                <input type="text" name="emergency_contact_name">
+                <label>The worst part of the module:</label>
+                <input type="text" name="emergency_contact_name">
+
+			</fieldset>
+			<center>
+				<a class="btn btn-secondary btn-large" href="javascript:history.go(-1)" type="button" style="margin-right: 70px">Back</a>
+				<input class="btn btn-primary btn-large" id="submitRego" type="submit" value="I'm done, sign me up!">
+			</center>
+		</form>
+	</div>
+</div>
+
+
+{% endblock %}

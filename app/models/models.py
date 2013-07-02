@@ -24,3 +24,15 @@ class Registration(db.Model):
     level = db.IntegerProperty()
     # Created
     created = db.DateTimeProperty(auto_now_add=True)
+
+class WinterSchoolFeedback(db.Model):
+    # Course
+    course = db.StringProperty()
+    # Feedback
+    aims_module_clear = db.IntegerProperty()
+    challenging_interesting = db.IntegerProperty()
+    presenter_effective = db.IntegerProperty()
+    would_recommend = db.IntegerProperty()
+    overall_satisfied = db.IntegerProperty()
+    best_part = db.StringProperty()
+    worst_part = db.StringProperty()
