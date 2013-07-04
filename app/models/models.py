@@ -36,3 +36,4 @@ class WinterSchoolFeedback(db.Model):
     overall_satisfied = db.IntegerProperty()
     best_part = db.StringProperty()
     worst_part = db.StringProperty()
+    other_comments = db.StringProperty()

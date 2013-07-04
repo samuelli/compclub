@@ -28,6 +28,8 @@ app = webapp2.WSGIApplication([
     ('/courses', main.courses),
     (r'/courses/(\d+)', main.course),
     ('/wizard', main.wizard),
+    (r'/feedback/(\w+)', main.feedback),
+    ('/feedback', main.feedback),
 ], debug=True)
 
 

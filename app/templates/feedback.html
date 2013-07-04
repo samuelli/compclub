@@ -6,29 +6,88 @@
 
 <div class="container">
 	<div class="well">
-		<form class="form-vertical" action="/signup" method="post">
+		<form class="form-vertical" action="/feedback" method="post">
 			<legend>Feedback for {{ course_title }}</legend>
 			<input type="hidden" name="course" value="{{ course_title }}" />
 			<fieldset>
-                The aims of this module were clear to me
-                The module was challenging and interesting
-                The presenter was effective in presenting this module
-                I would recommend this module to my friends next year
-                Overall, I was satisfied with the quality of this module
+                <table style="width: 100%; text-align: center">
+                    <thead>
+                        <tr>
+                            <th width="40%"> Question </th>
+                            <th width="10%"> Strongly Agree </th>
+                            <th width="10%"> Agree </th>
+                            <th width="10%"> Mildly agree </th>
+                            <th width="10%"> Mildly disagree </th>
+                            <th width="10%"> Disagree </th>
+                            <th width="10%"> Strongly disagree </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>The aims of this module were clear to me</td>
+                            <td><input type="radio" name="aims_module_clear" value="1"> </td>
+                            <td><input type="radio" name="aims_module_clear" value="2"> </td>
+                            <td><input type="radio" name="aims_module_clear" value="3"> </td>
+                            <td><input type="radio" name="aims_module_clear" value="4"> </td>
+                            <td><input type="radio" name="aims_module_clear" value="5"> </td>
+                            <td><input type="radio" name="aims_module_clear" value="6"> </td>
+                        </tr>
+                        <tr>
+                            <td>The module was challenging and interesting</td>
+                            <td><input type="radio" name="challenging_interesting" value="1"> </td>
+                            <td><input type="radio" name="challenging_interesting" value="2"> </td>
+                            <td><input type="radio" name="challenging_interesting" value="3"> </td>
+                            <td><input type="radio" name="challenging_interesting" value="4"> </td>
+                            <td><input type="radio" name="challenging_interesting" value="5"> </td>
+                            <td><input type="radio" name="challenging_interesting" value="6"> </td>
+                        </tr>
+                        <tr>
+                            <td>The presenter was effective in presenting this module</td>
+                            <td><input type="radio" name="presenter_effective" value="1"> </td>
+                            <td><input type="radio" name="presenter_effective" value="2"> </td>
+                            <td><input type="radio" name="presenter_effective" value="3"> </td>
+                            <td><input type="radio" name="presenter_effective" value="4"> </td>
+                            <td><input type="radio" name="presenter_effective" value="5"> </td>
+                            <td><input type="radio" name="presenter_effective" value="6"> </td>
+                        </tr>
+                        <tr>
+                            <td>I would recommend this module to my friends next year</td>
+                            <td><input type="radio" name="would_recommend" value="1"> </td>
+                            <td><input type="radio" name="would_recommend" value="2"> </td>
+                            <td><input type="radio" name="would_recommend" value="3"> </td>
+                            <td><input type="radio" name="would_recommend" value="4"> </td>
+                            <td><input type="radio" name="would_recommend" value="5"> </td>
+                            <td><input type="radio" name="would_recommend" value="6"> </td>
+                        </tr>
+                        <tr>
+                            <td>Overall, I was satisfied with the quality of this module</td>
+                            <td><input type="radio" name="overall_satisfied" value="1"> </td>
+                            <td><input type="radio" name="overall_satisfied" value="2"> </td>
+                            <td><input type="radio" name="overall_satisfied" value="3"> </td>
+                            <td><input type="radio" name="overall_satisfied" value="4"> </td>
+                            <td><input type="radio" name="overall_satisfied" value="5"> </td>
+                            <td><input type="radio" name="overall_satisfied" value="5"> </td>
+                        </tr>
+                    </tbody>
+                </table>
 
 				<label>The best part of the module:</label>
-                <input type="text" name="emergency_contact_name">
-                <label>The worst part of the module:</label>
-                <input type="text" name="emergency_contact_name">
+                <textarea rows="5" name="best_part" style="width:300px"></textarea>
 
+                <label>The worst part of the module:</label>
+                <textarea rows="5" name="worst_part" style="width:300px"></textarea>
+
+                <label>Any other comments or suggestions you would like to make about your experience today:</label>
+                <textarea rows="5" name="other_comments" style="width:300px"></textarea>
 			</fieldset>
-			<center>
-				<a class="btn btn-secondary btn-large" href="javascript:history.go(-1)" type="button" style="margin-right: 70px">Back</a>
-				<input class="btn btn-primary btn-large" id="submitRego" type="submit" value="I'm done, sign me up!">
+
+            <center>
+                <input class="btn btn-primary btn-large" id="submitFeedback" type="submit" value="Submit">
 			</center>
 		</form>
 	</div>
 </div>
+
 
 
 {% endblock %}

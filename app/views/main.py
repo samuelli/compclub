@@ -1,7 +1,7 @@
 import webapp2
 import jinja2
 import os
-from app.models.models import Course, Registration
+from app.models.models import Course, Registration, WinterSchoolFeedback
 from google.appengine.ext import db
 from google.appengine.api import users
 from google.appengine.api import mail
@@ -135,3 +135,27 @@ class wizard(webapp2.RequestHandler):
 
         template = jinja_environment.get_template('courses.html')
         self.response.out.write(template.render(template_values))
+
+class feedback(webapp2.RequestHandler):
+    def get(self, course_title="NO COURSE"):
+        template_values = {
+            'course_title': course_title,
+        }
+        template = jinja_environment.get_template('feedback.html')
+        self.response.out.write(template.render(template_values))
+
+    def post(self):
+        feedback = WinterSchoolFeedback()
+        feedback.course = self.request.get('course')
+        feedback.aims_module_clear = int(self.request.get('aims_module_clear'))
+        feedback.challenging_interesting = int(self.request.get('challenging_interesting'))
+        feedback.presenter_effective = int(self.request.get('presenter_effective'))
+        feedback.would_recommend = int(self.request.get('would_recommend'))
+        feedback.overall_satisfied = int(self.request.get('overall_satisfied'))
+        feedback.best_part = self.request.get('best_part')
+        feedback.worst_part = self.request.get('worst_part')
+        feedback.other_comments = self.request.get('other_comments')
+        feedback.put()
+
+        template = jinja_environment.get_template('thanks_feedback.html')
+        self.response.out.write(template.render())
