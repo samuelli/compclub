@@ -22,7 +22,7 @@ class AdminHandler(webapp2.RequestHandler):
         self.response.write('Hello world!')
 
 app = webapp2.WSGIApplication([
-    ('/admin/', admin.main),
+    ('/admin', admin.main),
     ('/admin/create', admin.create),
     (r'/admin/regos/(\d+)', admin.rego),
     (r'/admin/update/(\d+)', admin.update),
