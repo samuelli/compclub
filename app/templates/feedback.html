@@ -7,9 +7,23 @@
 <div class="container">
 	<div class="well">
 		<form class="form-vertical" action="/feedback" method="post">
-			<legend>Feedback for {{ course_title }}</legend>
-			<input type="hidden" name="course" value="{{ course_title }}" />
+			<legend>Feedback Form</legend>
 			<fieldset>
+                <label>Name of workshop?</label>
+                <select name="course">
+                    <option value="">---------</option>
+                    <option value="intro">Introduction to Programming</option>
+                    <option value="smartphones">Smartphone Sensors</option>
+                    <option value="databases">Relation Database Design and Implementation</option>
+                    <option value="internet">How the Internet works</option>
+                    <option value="practicalprogramming">Practical Programming</option>
+                    <option value="basicweb">Basic Web Design using HTML and CSS</option>
+                    <option value="financial">Overview of Financial Systems</option>
+                    <option value="advancedweb">Advanced web design using Javascript and PHP</option>
+                    <option value="gamemaker">Introduction to Gamemaker</option>
+                    <option value="progcomp">ProgComp for newbies</option>
+                </select>
+
                 <table style="width: 100%; text-align: center">
                     <thead>
                         <tr>

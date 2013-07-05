@@ -153,12 +153,9 @@ class wizard(webapp2.RequestHandler):
         self.response.out.write(template.render(template_values))
 
 class feedback(webapp2.RequestHandler):
-    def get(self, course_title="NO COURSE"):
-        template_values = {
-            'course_title': course_title,
-        }
+    def get(self):
         template = jinja_environment.get_template('feedback.html')
-        self.response.out.write(template.render(template_values))
+        self.response.out.write(template.render())
 
     def post(self):
         feedback = WinterSchoolFeedback()
