@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+
+{% block titlecontent %}HS Courses{% endblock %}
+
+{% block content %}
+
+
+
+<div class="container">
+    <div class="well">
+    <h1>Subscription</h1>
+    <form class="form-vertical" action="/subscription" method="post">
+        Name: <input required id="name" type="text" name="name"><br>
+        Email: <input required id="email" type="email" name="email"><br>
+        <label>Subscription Type:</label>
+        <div class="control-group" id="sub_type">
+            <ul style="list-style-type:none">
+                <li><input type="radio" name="sub_type" value="student" checked>Student</li>
+                <li><input type="radio" name="sub_type" value="teacher">Teacher</li>
+                <li><input type="radio" name="sub_type" value="parent">Parent</li>
+            </ul>
+        </div>
+        </fieldset>
+        <center>
+            <a class="btn btn-secondary btn-large" href="javascript:history.go(-1)" type="button" style="margin-right: 70px">Back</a>
+                <input class="btn btn-primary btn-large" id="sub_submit" type="submit" value="Subscribe">
+        </center>
+    </form>
+    </div>
+</div>
+{% endblock %}
