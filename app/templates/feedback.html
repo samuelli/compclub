@@ -7,9 +7,23 @@
 <div class="container">
 	<div class="well">
 		<form class="form-vertical" action="/feedback" method="post">
-			<legend>Feedback for {{ course_title }}</legend>
-			<input type="hidden" name="course" value="{{ course_title }}" />
+			<legend>Feedback Form</legend>
 			<fieldset>
+                <label>Name of workshop?</label>
+                <select name="course">
+                    <option value="" {% if course == "" %} selected="selected" {% endif %}>---------</option>
+                    <option value="intro" {% if course == "intro" %} selected="selected" {% endif %}>Introduction to Programming</option>
+                    <option value="smartphones" {% if course == "smartphones" %} selected="selected" {% endif %}>Smartphone Sensors</option>
+                    <option value="databases" {% if course == "databases" %} selected="selected" {% endif %}>Relation Database Design and Implementation</option>
+                    <option value="internet" {% if course == "internet" %} selected="selected" {% endif %}>How the Internet works</option>
+                    <option value="practicalprogramming" {% if course == "practicalprogramming" %} selected="selected" {% endif %}>Practical Programming</option>
+                    <option value="basicweb" {% if course == "basicweb" %} selected="selected" {% endif %}>Basic Web Design using HTML and CSS</option>
+                    <option value="financial" {% if course == "financial" %} selected="selected" {% endif %}>Overview of Financial Systems</option>
+                    <option value="advancedweb" {% if course == "advancedweb" %} selected="selected" {% endif %}>Advanced web design using Javascript and PHP</option>
+                    <option value="gamemaker" {% if course == "gamemaker" %} selected="selected" {% endif %}>Introduction to Gamemaker</option>
+                    <option value="progcomp" {% if course == "progcomp" %} selected="selected" {% endif %}>ProgComp for newbies</option>
+                </select>
+
                 <table style="width: 100%; text-align: center">
                     <thead>
                         <tr>
