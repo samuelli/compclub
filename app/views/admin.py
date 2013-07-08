@@ -1,7 +1,7 @@
 import webapp2
 import jinja2
 import os
-from app.models.models import Course, Registration
+from app.models.models import Course, Registration, Subscription
 from google.appengine.ext import db
 from google.appengine.api import users
 from datetime import datetime
@@ -62,6 +62,22 @@ class rego(webapp2.RequestHandler):
         }
 
         template = jinja_environment.get_template('regos.html')
+        self.response.out.write(template.render(template_values))
+
+class emailing(webapp2.RequestHandler):
+    def get(self):
+
+        s = db.GqlQuery("SELECT * FROM Subscription WHERE sub_type = 'student'")
+        t = db.GqlQuery("SELECT * FROM Subscription WHERE sub_type = 'teacher'")
+        p = db.GqlQuery("SELECT * FROM Subscription WHERE sub_type = 'parent'")
+
+        template_values = {
+            'student': s,
+            'teacher': t,
+            'parent': p,
+        }
+
+        template = jinja_environment.get_template('emailing.html')
         self.response.out.write(template.render(template_values))
 
 class update(webapp2.RequestHandler):

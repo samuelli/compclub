@@ -9,8 +9,8 @@
 		<form class="form-vertical" action="/feedback" method="post">
 			<legend>Feedback Form</legend>
 			<fieldset>
-                <label>Name of workshop?</label>
-                <select name="course">
+                <label>Name of module?</label>
+                <select required name="course">
                     <option value="">---------</option>
                     <option value="intro">Introduction to Programming</option>
                     <option value="smartphones">Smartphone Sensors</option>
@@ -39,7 +39,7 @@
                     <tbody>
                         <tr>
                             <td>The aims of this module were clear to me</td>
-                            <td><input type="radio" name="aims_module_clear" value="1"> </td>
+                            <td><input required type="radio" name="aims_module_clear" value="1"> </td>
                             <td><input type="radio" name="aims_module_clear" value="2"> </td>
                             <td><input type="radio" name="aims_module_clear" value="3"> </td>
                             <td><input type="radio" name="aims_module_clear" value="4"> </td>
@@ -48,7 +48,7 @@
                         </tr>
                         <tr>
                             <td>The module was challenging and interesting</td>
-                            <td><input type="radio" name="challenging_interesting" value="1"> </td>
+                            <td><input required type="radio" name="challenging_interesting" value="1"> </td>
                             <td><input type="radio" name="challenging_interesting" value="2"> </td>
                             <td><input type="radio" name="challenging_interesting" value="3"> </td>
                             <td><input type="radio" name="challenging_interesting" value="4"> </td>
@@ -57,7 +57,7 @@
                         </tr>
                         <tr>
                             <td>The presenter was effective in presenting this module</td>
-                            <td><input type="radio" name="presenter_effective" value="1"> </td>
+                            <td><input required type="radio" name="presenter_effective" value="1"> </td>
                             <td><input type="radio" name="presenter_effective" value="2"> </td>
                             <td><input type="radio" name="presenter_effective" value="3"> </td>
                             <td><input type="radio" name="presenter_effective" value="4"> </td>
@@ -66,7 +66,7 @@
                         </tr>
                         <tr>
                             <td>I would recommend this module to my friends next year</td>
-                            <td><input type="radio" name="would_recommend" value="1"> </td>
+                            <td><input required type="radio" name="would_recommend" value="1"> </td>
                             <td><input type="radio" name="would_recommend" value="2"> </td>
                             <td><input type="radio" name="would_recommend" value="3"> </td>
                             <td><input type="radio" name="would_recommend" value="4"> </td>
@@ -75,7 +75,7 @@
                         </tr>
                         <tr>
                             <td>Overall, I was satisfied with the quality of this module</td>
-                            <td><input type="radio" name="overall_satisfied" value="1"> </td>
+                            <td><input required type="radio" name="overall_satisfied" value="1"> </td>
                             <td><input type="radio" name="overall_satisfied" value="2"> </td>
                             <td><input type="radio" name="overall_satisfied" value="3"> </td>
                             <td><input type="radio" name="overall_satisfied" value="4"> </td>
@@ -101,7 +101,5 @@
 		</form>
 	</div>
 </div>
-
-
 
 {% endblock %}

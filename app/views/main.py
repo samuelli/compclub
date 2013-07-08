@@ -1,7 +1,7 @@
 import webapp2
 import jinja2
 import os
-from app.models.models import Course, Registration, WinterSchoolFeedback
+from app.models.models import Course, Registration, WinterSchoolFeedback, Subscription
 from google.appengine.ext import db
 from google.appengine.api import users
 from google.appengine.api import mail
@@ -111,6 +111,22 @@ UNSW Computing Club
         }
         template = jinja_environment.get_template('thanks.html')
         self.response.out.write(template.render(template_values))
+
+class subscription(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('subscription.html')
+        self.response.out.write(template.render())
+    def post(self):
+        subscribe = Subscription()
+        subscribe.name = self.request.get('name')
+        subscribe.email = self.request.get('email')
+        subscribe.sub_type = self.request.get('sub_type')
+        subscribe.put()
+
+        template = jinja_environment.get_template('thanks_subscription.html')
+        self.response.out.write(template.render())
+
+
 
 class wizard(webapp2.RequestHandler):
     def get(self):

@@ -37,3 +37,8 @@ class WinterSchoolFeedback(db.Model):
     best_part = db.StringProperty()
     worst_part = db.StringProperty()
     other_comments = db.StringProperty()
+
+class Subscription(db.Model):
+    name = db.StringProperty()
+    email = db.EmailProperty()
+    sub_type = db.StringProperty()
