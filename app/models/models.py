@@ -34,8 +34,8 @@ class WinterSchoolFeedback(db.Model):
     presenter_effective = db.IntegerProperty()
     would_recommend = db.IntegerProperty()
     overall_satisfied = db.IntegerProperty()
-    best_part = db.StringProperty()
-    worst_part = db.StringProperty()
+    best_part = db.TextProperty()
+    worst_part = db.TextProperty()
     other_comments = db.StringProperty()
 
 class Subscription(db.Model):
