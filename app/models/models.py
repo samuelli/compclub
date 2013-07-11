@@ -1,5 +1,6 @@
 from google.appengine.ext import db
 
+
 class Course(db.Model):
     title = db.StringProperty()
     from_year = db.IntegerProperty()
@@ -10,6 +11,7 @@ class Course(db.Model):
     maxlevel = db.IntegerProperty()
     # Created
     created = db.DateTimeProperty(auto_now_add=True)
+
 
 # Parent = course
 class Registration(db.Model):
@@ -25,6 +27,7 @@ class Registration(db.Model):
     # Created
     created = db.DateTimeProperty(auto_now_add=True)
 
+
 class WinterSchoolFeedback(db.Model):
     # Course
     course = db.StringProperty()
@@ -37,6 +40,7 @@ class WinterSchoolFeedback(db.Model):
     best_part = db.TextProperty()
     worst_part = db.TextProperty()
     other_comments = db.StringProperty()
+
 
 class Subscription(db.Model):
     name = db.StringProperty()

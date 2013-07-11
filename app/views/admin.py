@@ -1,9 +1,11 @@
 import webapp2
 import jinja2
 import os
+import re
 from app.models.models import Course, Registration, Subscription
 from google.appengine.ext import db
 from google.appengine.api import users
+from google.appengine.api import mail
 from datetime import datetime
 import httplib
 import urllib
@@ -76,9 +78,31 @@ class emailing(webapp2.RequestHandler):
             'teacher': t,
             'parent': p,
         }
-
         template = jinja_environment.get_template('emailing.html')
         self.response.out.write(template.render(template_values))
+
+    def post(self):
+        emails = self.request.get_all('emails')
+        email_subject = self.request.get('email_subject')
+        email_body = self.request.get('email_body')
+
+        # Send an email to each email
+        for email in emails:
+            #get person's name from database
+            n = db.GqlQuery("SELECT * FROM Subscription WHERE email =:1", email).get()
+            #re.sub() remove duplicate white spaces
+            #.strip() remove whitespaces from the start and end of name
+            name = re.sub('\s+', ' ', n.name).strip()
+            #print name
+            #print "%s" % emails
+
+            message = mail.EmailMessage(sender="UNSW Comp Club <admin@compclub.com.au>", subject=email_subject)
+            message.to = name + " <" + email + ">"
+            message.bcc = "champs@compclub.com.au"
+            #insert person's name to the first line of email body
+            message.body = "Dear "+ name + email_body
+            #print "Dear "+ name + email_body
+            #message.send()
 
 class update(webapp2.RequestHandler):
     def post(self, course):

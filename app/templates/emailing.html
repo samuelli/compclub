@@ -6,112 +6,133 @@
 
 
 <script type="text/javascript">
-    function selectAll(bx){
-        var sec_stu = document.getElementById("select_Stu")
-        sec_stu.checked = bx.checked;
-        var sec_tea = document.getElementById("select_Tea")
-        sec_tea.checked = bx.checked;
-        var sec_par = document.getElementById("select_Par")
-        sec_par.checked = bx.checked;
+    function selectAllBox(box){
+        var selectAllStudent = document.getElementById("selectAllStudentCheckBox");
+        selectAllStudent.checked = box.checked;
+        var selectAllTeacher= document.getElementById("selectAllTeacherCheckBox");
+        selectAllTeacher.checked = box.checked;
+        var selectAllParent = document.getElementById("selectAllParentCheckBox");
+        selectAllParent.checked = box.checked;
 
-        for (var tbls = document.getElementsByTagName("table"),i=tbls.length; i--;)
-            for (var bxs=tbls[i].getElementsByTagName("input"),j=bxs.length; j--;)
-               if (bxs[j].type=="checkbox")
-                   bxs[j].checked = bx.checked;
+        for (var tables = document.getElementsByTagName("table"),i=tables.length; i--;)
+            for (var boxes=tables[i].getElementsByTagName("input"),j=boxes.length; j--;)
+               if (boxes[j].type=="checkbox")
+                   boxes[j].checked = box.checked;
     }
 
-    function selectByName(bx, box_name){
-        var sec_all = document.getElementById("select_All")
-        if(sec_all.checked)
-            sec_all.checked = bx.checked;
-        for (var tbls = document.getElementsByTagName("table"),i=tbls.length; i--;)
-            for (var bxs=tbls[i].getElementsByTagName("input"),j=bxs.length; j--;)
-               if (bxs[j].name==box_name)
-                   bxs[j].checked = bx.checked;
+    function selectByAttribute(box, box_name){
+        var selectAll = document.getElementById("selectAllCheckBox")
+        if(selectAll.checked)
+            selectAll.checked = box.checked;
+        for (var tables = document.getElementsByTagName("table"),i=tables.length; i--;)
+            for (var boxes=tables[i].getElementsByTagName("input"),j=boxes.length; j--;)
+               if (boxes[j].getAttribute('persontype')==box_name)
+                   boxes[j].checked = box.checked;
     }
 </script>
 
 
 <div class="container">
     <div class="well">
+        <form action="/admin/emailing" method="post">
 
-        <input type="checkbox" id="select_All" onclick="selectAll(this)" checked><b>Select All</b>
-        <input type="checkbox" id="select_Stu" onclick="selectByName(this, 'stu_email')" checked><b>Student</b>
-        <input type="checkbox" id="select_Tea" onclick="selectByName(this, 'tea_email')" checked><b>Teacher</b>
-        <input type="checkbox" id="select_Par" onclick="selectByName(this, 'par_email')" checked><b>Parent</b>
+            <input type="checkbox" id="selectAllCheckBox" onclick="selectAllBox(this)" checked><b>Select All</b>
+            <input type="checkbox" id="selectAllStudentCheckBox" onclick="selectByAttribute(this, 'student')" checked><b>Student</b>
+            <input type="checkbox" id="selectAllTeacherCheckBox" onclick="selectByAttribute(this, 'teacher')" checked><b>Teacher</b>
+            <input type="checkbox" id="selectAllParentCheckBox" onclick="selectByAttribute(this, 'parent')" checked><b>Parent</b>
 
-        <h2>Student</h2>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Sub_Type</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for s in student %}
+            <h3>Student</h3>
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <td><input type="checkbox" name="stu_email" checked></td>
-                        <td>{{ loop.index }}</td>
-                        <td>{{ s.name }}</td>
-                        <td>{{ s.email }}</td>
-                        <td>{{ s.sub_type }}</td>
+                        <th></th>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Sub_Type</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for s in student %}
+                        <tr>
+                            <td><input type="checkbox" name="emails" personType="student" value="{{s.email}}" checked></td>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ s.name }}</td>
+                            <td>{{ s.email }}</td>
+                            <td>{{ s.sub_type }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
 
-        <h2>Teacher</h2>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Sub_Type</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for t in teacher %}
+            <h3>Teacher</h3>
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <td><input type="checkbox" name="tea_email" checked></td>
-                        <td>{{ loop.index }}</td>
-                        <td>{{ t.name }}</td>
-                        <td>{{ t.email }}</td>
-                        <td>{{ t.sub_type }}</td>
+                        <th></th>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Sub_Type</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for t in teacher %}
+                        <tr>
+                            <td><input type="checkbox" name="emails" personType="teacher" value="{{t.email}}" checked></td>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ t.name }}</td>
+                            <td>{{ t.email }}</td>
+                            <td>{{ t.sub_type }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
 
-        <h2>Parent</h2>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Sub_Type</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for p in parent %}
+            <h3>Parent</h3>
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <td><input type="checkbox" name="par_email"checked></td>
-                        <td>{{ loop.index }}</td>
-                        <td>{{ p.name }}</td>
-                        <td>{{ p.email }}</td>
-                        <td>{{ p.sub_type }}</td>
+                        <th></th>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Sub_Type</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for p in parent %}
+                        <tr>
+                            <td><input type="checkbox" name="emails" personType="parent" value="{{p.email}}" checked></td>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ p.name }}</td>
+                            <td>{{ p.email }}</td>
+                            <td>{{ p.sub_type }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <br/>
 
+            <h4>Email Subject</h4>
+            <input type="text" name="email_subject" required style='width:70%' >
+
+            <h4>Email Body</h4>
+            <textarea rows="5" cols="100" style="width:98%; height:250px;" name="email_body">
+,
+
+<--- ^^^DO NOT REMOVE TOP 2 LINES^^^ ***REMOVE THIS LINE*** Your email message starts here--->
+
+
+
+
+Should you have any questions, feel free to contact us at team@compclub.com.au.
+
+UNSW Computing Club</textarea>
+
+            <input type="submit">
+
+        </form>
     </div>
 </div>
 {% endblock %}
