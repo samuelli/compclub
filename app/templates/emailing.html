@@ -31,7 +31,6 @@
     }
 </script>
 
-
 <div class="container">
     <div class="well">
         <form action="/admin/emailing" method="post">
@@ -115,25 +114,30 @@
             <br/>
 
             <h4>Email Subject</h4>
-            <input type="text" name="email_subject" required style='width:70%' >
+            <input type="text" name="email_subject"  value="[UNSW CompClub]" style='width:60%' required>
+
+            <h4>Bcc</h4>
+
+            <input type="text" name="email_bcc"  value="champs@compclub.com.au" style='width:60%' autocomplete>
 
             <h4>Email Body</h4>
+
             <textarea rows="5" cols="100" style="width:98%; height:250px;" name="email_body">
-,
+Dear <<NAME>>,
 
-<--- ^^^DO NOT REMOVE TOP 2 LINES^^^ ***REMOVE THIS LINE*** Your email message starts here--->
-
-
+<---   Your email message starts here --->
 
 
 Should you have any questions, feel free to contact us at team@compclub.com.au.
 
-UNSW Computing Club</textarea>
+UNSW Computing Club
+
+If you wish to unsubscribe, click on this link: <<UNSUBSCRIBE>></textarea>
 
             <input type="submit">
+
 
         </form>
     </div>
 </div>
 {% endblock %}
-

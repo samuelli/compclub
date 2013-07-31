@@ -10,6 +10,13 @@ from datetime import datetime
 import httplib
 import urllib
 
+
+#function to replace tag with string
+def replaceTagWithString(tagName, newString, sourceString):
+    tag = "<<"+tagName+">>"
+    replacedString = re.sub(tag, newString, sourceString)
+    return replacedString
+
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.join(os.path.dirname(os.path.dirname(__file__)), 'templates')))
 
@@ -84,24 +91,36 @@ class emailing(webapp2.RequestHandler):
     def post(self):
         emails = self.request.get_all('emails')
         email_subject = self.request.get('email_subject')
-        email_body = self.request.get('email_body')
+        email_bcc = self.request.get('email_bcc')
+        original_email_body = self.request.get('email_body')
 
         # Send an email to each email
         for email in emails:
             #get person's name from database
-            n = db.GqlQuery("SELECT * FROM Subscription WHERE email =:1", email).get()
             #re.sub() remove duplicate white spaces
             #.strip() remove whitespaces from the start and end of name
+            n = db.GqlQuery("SELECT * FROM Subscription WHERE email =:1", email).get()
             name = re.sub('\s+', ' ', n.name).strip()
-            #print name
+            #print "person's name: " + name
+
+            #insert person's name to the tag <<NAME>>
+            email_body = replaceTagWithString("NAME", name, original_email_body)
+            #print email_body
+
+            #person's ID (based on database unique ID
+            person_id = str(n.key().id())
+            #print person_id
             #print "%s" % emails
+            unlink = "http://www.compclub.com.au/unsubscribe/" + person_id
+            #make UNSUBSCRIBE link
+            email_body = replaceTagWithString("UNSUBSCRIBE", unlink, email_body)
+            print email_body
 
             message = mail.EmailMessage(sender="UNSW Comp Club <admin@compclub.com.au>", subject=email_subject)
             message.to = name + " <" + email + ">"
-            message.bcc = "champs@compclub.com.au"
-            #insert person's name to the first line of email body
-            message.body = "Dear "+ name + email_body
-            #print "Dear "+ name + email_body
+            message.bcc = email_bcc
+            message.body = email_body
+
             #message.send()
 
 class update(webapp2.RequestHandler):
