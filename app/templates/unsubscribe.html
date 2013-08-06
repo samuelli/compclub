@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+
+{% block titlecontent %}HS Courses{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="well">
+    <h1>Unsubscribing</h1>
+    <form class="form-vertical" action="/unsubscribed" method="post">
+
+        <input type="hidden" name="person_key" value="{{ person_key }}">
+
+        Are you sure you want to unsubscribe <b><i>" {{ email }} "</i></b> from UNSW Comp Club?
+        </br>
+        You will not receive any future updates.
+
+        <center>
+            <a class="btn btn-secondary btn-large" href="javascript:history.go(-1)" type="button" style="margin-right: 70px">Back</a>
+                <input class="btn btn-primary btn-large" id="sub_submit" type="submit" value="Unsubscribe">
+        </center>
+    </form>
+    </div>
+</div>
+{% endblock %}

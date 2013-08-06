@@ -112,10 +112,12 @@ UNSW Computing Club
         template = jinja_environment.get_template('thanks.html')
         self.response.out.write(template.render(template_values))
 
+
 class subscription(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('subscription.html')
         self.response.out.write(template.render())
+
     def post(self):
         subscribe = Subscription()
         subscribe.name = self.request.get('name')
@@ -126,12 +128,36 @@ class subscription(webapp2.RequestHandler):
         template = jinja_environment.get_template('thanks_subscription.html')
         self.response.out.write(template.render())
 
+class unsubscribe(webapp2.RequestHandler):
+    def get(self, id):
+        p = Subscription.get_by_id(int(id))
+
+        #used ID to generate link but use key to delele (harder to guess)
+        template_values = {
+            'email': p.email,
+            'person_key': p.key(),
+        }
+
+        template = jinja_environment.get_template('unsubscribe.html')
+        self.response.out.write(template.render(template_values))
+
+
+class unsubscribed(webapp2.RequestHandler):
+    def post(self):
+        p_key = self.request.get('person_key')
+        #email = self.request.get('email')
+
+        db.delete(p_key)
+        #print p_key
+        template = jinja_environment.get_template('unsubscribed.html')
+        self.response.out.write(template.render())
 
 
 class wizard(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('wizard.html')
         self.response.out.write(template.render())
+
     def post(self):
         q = db.GqlQuery("SELECT * FROM Course LIMIT 10")
         year = int(self.request.get('year'))
@@ -151,6 +177,7 @@ class wizard(webapp2.RequestHandler):
 
         template = jinja_environment.get_template('courses.html')
         self.response.out.write(template.render(template_values))
+
 
 class feedback(webapp2.RequestHandler):
     def get(self):
