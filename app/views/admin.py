@@ -75,6 +75,7 @@ class rego(webapp2.RequestHandler):
 
 class emailing(webapp2.RequestHandler):
     def get(self):
+        sent = True if self.request.get('sent') == "true" else False
 
         s = db.GqlQuery("SELECT * FROM Subscription WHERE sub_type = 'student'")
         t = db.GqlQuery("SELECT * FROM Subscription WHERE sub_type = 'teacher'")
@@ -84,6 +85,7 @@ class emailing(webapp2.RequestHandler):
             'student': s,
             'teacher': t,
             'parent': p,
+            'sent': sent,
         }
         template = jinja_environment.get_template('emailing.html')
         self.response.out.write(template.render(template_values))
@@ -121,7 +123,8 @@ class emailing(webapp2.RequestHandler):
             message.bcc = email_bcc
             message.body = email_body
 
-            #message.send()
+            message.send()
+        self.redirect('/admin/emailing?sent=true')
 
 class update(webapp2.RequestHandler):
     def post(self, course):

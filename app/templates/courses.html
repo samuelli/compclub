@@ -7,6 +7,7 @@
 <div class="container">
     {% if users and users.is_current_user_admin() %}
         <a href="/admin/create" type="button" class="btn btn-primary">Create a new course</a>
+        <a href="/admin/emailing" type="button" class="btn btn-primary">Send email</a>
     {% endif %}
 
 	{% if size > 0 %}

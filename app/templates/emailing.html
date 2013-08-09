@@ -32,6 +32,11 @@
 </script>
 
 <div class="container">
+    {% if sent %}
+    <div class="alert alert-success">
+      Message sent successfully.
+    </div>
+    {% endif %}
     <div class="well">
         <form action="/admin/emailing" method="post">
 
@@ -134,7 +139,7 @@ UNSW Computing Club
 
 If you wish to unsubscribe, click on this link: <<UNSUBSCRIBE>></textarea>
 
-            <input type="submit">
+            <input type="submit" class="btn btn-success">
 
 
         </form>
