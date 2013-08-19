@@ -84,10 +84,14 @@ class rollmark(webapp2.RequestHandler):
         r.date = date
         r.put();
 
+        regos = db.GqlQuery("SELECT * FROM Registration WHERE ANCESTOR IS :1", c)
+        registrations = [r.full_name for r in regos]
+
         template_values = {
             'course': c.title,
             'date': date.date(),
-            'students': r.students
+            'regos': registrations,
+            'students': present
         }
 
         template = jinja_environment.get_template('rollview.html')
@@ -98,6 +102,7 @@ class rollview(webapp2.RequestHandler):
         c = Course.get_by_id(int(course))
 
         rolls = db.GqlQuery("SELECT * FROM Roll WHERE course_name =:1", c.title)
+        rolls = sorted(rolls, key=lambda x: x.date)
 
         template_values = {
             'course': c,
@@ -110,13 +115,16 @@ class rollview(webapp2.RequestHandler):
         c = Course.get_by_id(int(course))
         date = datetime.strptime(self.request.get('date'), '%Y-%m-%d')
 
+        regos = db.GqlQuery("SELECT * FROM Registration WHERE ANCESTOR IS :1", c)
+        registrations = [r.full_name for r in regos]
+
         rolls = db.GqlQuery("SELECT * FROM Roll WHERE course_name =:1 AND date =:2", c.title, date)
         students = [s for r in rolls for s in r.students]
 
         template_values = {
             'course': c.title,
-
             'date': date.date(),
+            'regos': registrations,
             'students': students
         }
 

@@ -12,17 +12,24 @@
                 <tr>
                     <th>#</th>
                     <th>Name</th>
+                    <th>Attended?</th>
                 </tr>
             </thead>
             <tbody>
-                {% for s in students %}
+                {% for r in regos %}
                     <tr>
                         <td>{{ loop.index }}</td>
-                        <td>{{ s }}</td>
+                        <td>{{ r }}</td>
+                        {% if r in students %}
+                        <td>✓</td>
+                        {% else %}
+                        <td />
+                        {% endif %}
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
+        <a href="/"
     </div>
 </div>
 {% endblock %}
