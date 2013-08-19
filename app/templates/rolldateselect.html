@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+
+{% block titlecontent %}HS Courses{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="well">
+        <form method="POST">
+            <h2>Roll for {{ course.title }}</h2>
+
+            <label>Choose a date</label>
+            
+            <select name="date">
+                {% for r in rolls %}
+                <option value="{{ r.date.date() }}">{{ r.date.date() }}</option>
+                {% endfor %}
+            </select>
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </form>        
+    </div>
+</div>
+{% endblock %}

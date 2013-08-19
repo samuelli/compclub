@@ -26,7 +26,7 @@ app = webapp2.WSGIApplication([
     ('/admin/create', admin.create),
     (r'/admin/regos/(\d+)', admin.rego),
     (r'/admin/update/(\d+)', admin.update),
+    (r'/admin/rollmark/(\d+)', admin.rollmark),
+    (r'/admin/rollview/(\d+)', admin.rollview),
     ('/admin/emailing', admin.emailing),
 ], debug=True)
-
-

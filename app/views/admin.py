@@ -2,13 +2,14 @@ import webapp2
 import jinja2
 import os
 import re
-from app.models.models import Course, Registration, Subscription
+from app.models.models import Course, Registration, Subscription, Roll
 from google.appengine.ext import db
 from google.appengine.api import users
 from google.appengine.api import mail
 from datetime import datetime
 import httplib
 import urllib
+import logging
 
 
 #function to replace tag with string
@@ -56,6 +57,70 @@ class create(webapp2.RequestHandler):
         }
 
         template = jinja_environment.get_template('courses.html')
+        self.response.out.write(template.render(template_values))
+
+class rollmark(webapp2.RequestHandler):
+    def get(self, course):
+        c = Course.get_by_id(int(course))
+
+        q = db.GqlQuery("SELECT * FROM Registration WHERE ANCESTOR IS :1", c)
+        q = sorted(q, key=lambda x: x.full_name)
+
+        template_values = {
+            'course': c,
+            'regos': q,
+            'users': users,
+        }
+
+        template = jinja_environment.get_template('roll.html')
+        self.response.out.write(template.render(template_values))
+    def post(self, course):
+        c = Course.get_by_id(int(course))
+        date = datetime.strptime(self.request.get('roll_date'), '%Y-%m-%d')
+        present = self.request.get_all("present")
+        r = Roll();
+        r.students = present
+        r.course_name = c.title
+        r.date = date
+        r.put();
+
+        template_values = {
+            'course': c.title,
+            'date': date.date(),
+            'students': r.students
+        }
+
+        template = jinja_environment.get_template('rollview.html')
+        self.response.out.write(template.render(template_values))
+
+class rollview(webapp2.RequestHandler):
+    def get(self, course):
+        c = Course.get_by_id(int(course))
+
+        rolls = db.GqlQuery("SELECT * FROM Roll WHERE course_name =:1", c.title)
+
+        template_values = {
+            'course': c,
+            'rolls': rolls
+        }
+
+        template = jinja_environment.get_template('rolldateselect.html')
+        self.response.out.write(template.render(template_values))
+    def post(self, course):
+        c = Course.get_by_id(int(course))
+        date = datetime.strptime(self.request.get('date'), '%Y-%m-%d')
+
+        rolls = db.GqlQuery("SELECT * FROM Roll WHERE course_name =:1 AND date =:2", c.title, date)
+        students = [s for r in rolls for s in r.students]
+
+        template_values = {
+            'course': c.title,
+
+            'date': date.date(),
+            'students': students
+        }
+
+        template = jinja_environment.get_template('rollview.html')
         self.response.out.write(template.render(template_values))
 
 class rego(webapp2.RequestHandler):

@@ -1,0 +1,36 @@
+{% extends "index.html" %}
+
+{% block titlecontent %}HS Courses{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="well">
+        <form method="POST">
+            <h2>Roll for {{ course.title }}</h2>
+            <input type="date" name="roll_date">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Present?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for r in regos %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ r.full_name }}</td>
+                            <td><input type="checkbox" name="present" value="{{ r.full_name }}"></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </form>        
+    </div>
+</div>
+{% endblock %}
+
