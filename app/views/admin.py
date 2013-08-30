@@ -10,7 +10,6 @@ from datetime import datetime
 import httplib
 import urllib
 
-
 #function to replace tag with string
 def replaceTagWithString(tagName, newString, sourceString):
     tag = "<<"+tagName+">>"
@@ -121,7 +120,7 @@ class emailing(webapp2.RequestHandler):
             message = mail.EmailMessage(sender="UNSW Comp Club <admin@compclub.com.au>", subject=email_subject)
             message.to = name + " <" + email + ">"
             message.bcc = email_bcc
-            message.body = email_body
+            message.html = email_body
 
             message.send()
         self.redirect('/admin/emailing?sent=true')

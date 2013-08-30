@@ -40,10 +40,10 @@
     <div class="well">
         <form action="/admin/emailing" method="post">
 
-            <input type="checkbox" id="selectAllCheckBox" onclick="selectAllBox(this)" checked><b>Select All</b>
-            <input type="checkbox" id="selectAllStudentCheckBox" onclick="selectByAttribute(this, 'student')" checked><b>Student</b>
-            <input type="checkbox" id="selectAllTeacherCheckBox" onclick="selectByAttribute(this, 'teacher')" checked><b>Teacher</b>
-            <input type="checkbox" id="selectAllParentCheckBox" onclick="selectByAttribute(this, 'parent')" checked><b>Parent</b>
+            <input type="checkbox" id="selectAllCheckBox" onclick="selectAllBox(this)"><b>Select All</b>
+            <input type="checkbox" id="selectAllStudentCheckBox" onclick="selectByAttribute(this, 'student')"><b>Student</b>
+            <input type="checkbox" id="selectAllTeacherCheckBox" onclick="selectByAttribute(this, 'teacher')"><b>Teacher</b>
+            <input type="checkbox" id="selectAllParentCheckBox" onclick="selectByAttribute(this, 'parent')"><b>Parent</b>
 
             <h3>Student</h3>
             <table class="table table-striped">
@@ -59,7 +59,7 @@
                 <tbody>
                     {% for s in student %}
                         <tr>
-                            <td><input type="checkbox" name="emails" personType="student" value="{{s.email}}" checked></td>
+                            <td><input type="checkbox" name="emails" personType="student" value="{{s.email}}"></td>
                             <td>{{ loop.index }}</td>
                             <td>{{ s.name }}</td>
                             <td>{{ s.email }}</td>
@@ -83,7 +83,7 @@
                 <tbody>
                     {% for t in teacher %}
                         <tr>
-                            <td><input type="checkbox" name="emails" personType="teacher" value="{{t.email}}" checked></td>
+                            <td><input type="checkbox" name="emails" personType="teacher" value="{{t.email}}"></td>
                             <td>{{ loop.index }}</td>
                             <td>{{ t.name }}</td>
                             <td>{{ t.email }}</td>
@@ -107,7 +107,7 @@
                 <tbody>
                     {% for p in parent %}
                         <tr>
-                            <td><input type="checkbox" name="emails" personType="parent" value="{{p.email}}" checked></td>
+                            <td><input type="checkbox" name="emails" personType="parent" value="{{p.email}}"></td>
                             <td>{{ loop.index }}</td>
                             <td>{{ p.name }}</td>
                             <td>{{ p.email }}</td>
@@ -123,21 +123,21 @@
 
             <h4>Bcc</h4>
 
-            <input type="text" name="email_bcc"  value="champs@compclub.com.au" style='width:60%' autocomplete>
+            <input type="text" name="email_bcc"  value="sam@compclub.com.au" style='width:60%' autocomplete>
 
             <h4>Email Body</h4>
 
             <textarea rows="5" cols="100" style="width:98%; height:250px;" name="email_body">
-Dear <<NAME>>,
+<p>Dear <<NAME>>,</p>
 
 <---   Your email message starts here --->
 
 
-Should you have any questions, feel free to contact us at team@compclub.com.au.
+<p>Should you have any questions, feel free to contact us at team@compclub.com.au.</p>
 
-UNSW Computing Club
-
-If you wish to unsubscribe, click on this link: <<UNSUBSCRIBE>></textarea>
+<p>UNSW Computing Club
+ <span style="font-size:smaller"><a href="<<UNSUBSCRIBE>>">Unsubscribe</a> here </span></p>
+            </textarea>
 
             <input type="submit" class="btn btn-success">
 
