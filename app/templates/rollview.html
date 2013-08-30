@@ -1,0 +1,35 @@
+{% extends "index.html" %}
+
+{% block titlecontent %}HS Courses{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="well">
+        <h2>Roll for {{ course }} on {{ date }}</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Attended?</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in regos %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ r }}</td>
+                        {% if r in students %}
+                        <td>✓</td>
+                        {% else %}
+                        <td />
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/"
+    </div>
+</div>
+{% endblock %}

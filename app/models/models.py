@@ -27,6 +27,12 @@ class Registration(db.Model):
     # Created
     created = db.DateTimeProperty(auto_now_add=True)
 
+class Roll(db.Model):
+    course_name = db.StringProperty()
+    date = db.DateTimeProperty()
+    students = db.StringListProperty()
+    # Created
+    created = db.DateTimeProperty(auto_now_add=True)
 
 class WinterSchoolFeedback(db.Model):
     # Course

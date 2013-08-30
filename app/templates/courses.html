@@ -77,6 +77,8 @@
 			<div class="well">
 				<div style="float:right; padding: 20px">
                     {% if users and users.is_current_user_admin() %}
+                        <a href="/admin/rollmark/{{ c.key().id() }}" class="btn btn-success" type="button">Mark Roll</a>
+                        <a href="/admin/rollview/{{ c.key().id() }}" class="btn btn-success" type="button">View Roll</a>
                         <a href="/admin/regos/{{ c.key().id() }}" class="btn btn-success" type="button">Display registrations</a>
                     {% else %}
                         {% if c.passed %}
