@@ -17,21 +17,8 @@
 import webapp2
 import app.views.main as main
 
-class MainHandler(webapp2.RequestHandler):
-    def get(self):
-        self.response.write('Hello world!')
-
 app = webapp2.WSGIApplication([
     ('/', main.main),
-    ('/signup', main.signup),
-    ('/about', main.about),
-    ('/courses', main.courses),
-    (r'/courses/(\d+)', main.course),
-    ('/wizard', main.wizard),
-    ('/feedback', main.feedback),
-    ('/subscription', main.subscription),
-    (r'/unsubscribe/(\d+)', main.unsubscribe),
-    ('/unsubscribed', main.unsubscribed),
 ], debug=True)
 
 
