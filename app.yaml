@@ -8,6 +8,10 @@ handlers:
 - url: /assets
   static_dir: assets
 
+- url: /admin.*
+  script: admin.app
+  login: admin
+
 - url: .*
   script: main.app
 

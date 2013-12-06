@@ -3,13 +3,15 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
 <head>
-    <title>Title</title>
+    <title>UNSW Computing Club {% block titlecontent %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- styles -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/hs-bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/docs.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/hs-bootstrap-responsive.min.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/hs.css" />
     <!-- jquery + bootstrap -->
     <script src="/assets/js/jquery.min.js" type="text/javascript"></script>
     <script src="/assets/js/bootstrap.min.js" type="text/javascript"></script>
@@ -18,10 +20,25 @@
     <script src="/assets/js/jquery.effects.core.min.js" type="text/javascript"></script>
     <script src="/assets/js/jquery.effects.slide.min.js" type="text/javascript"></script>
     <script src="/assets/js/jquery.form.js"></script>
+    <script src="/assets/js/hs.js"></script>
 
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 </head>
 <body>
-    Some text
-</body>
+    <div class="container">
+        <div class="well">
+            <header class="subhead heading">
+                <h1><a href="/"><img src="/assets/img/hs-unsw_logo.png"></a>High School Computing Club
+</h1>
+            </header>
+        </div>
+    </div>
+    {% block content %}{% endblock %}
+    <footer class="container">
+        <center>
+            Presented by <a href="http://www.csesoc.unsw.edu.au">UNSW CSESoc</a> and <a href="http://www.cse.unsw.edu.au/">CSE@UNSW</a>
+            &nbsp;|&nbsp; Contact us <a href="mailto:team@compclub.com.au">here</a>
+        </center>
+    </footer>
+    </body>
 </html>
