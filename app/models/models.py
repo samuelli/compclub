@@ -9,6 +9,7 @@ class Course(db.Model):
     description = db.TextProperty()
     minlevel = db.IntegerProperty()
     maxlevel = db.IntegerProperty()
+    allow_button = db.BooleanProperty()
     # Created
     created = db.DateTimeProperty(auto_now_add=True)
 
