@@ -9,70 +9,6 @@
         <a href="/admin/create" type="button" class="btn btn-primary">Create a new course</a>
         <a href="/admin/emailing" type="button" class="btn btn-primary">Send email</a>
     {% endif %}
- <div class="well">
-        <h2>Arduino workshops for high schools</h2>
-        <p>Computing Club is offering <i>free</i> Arduino-based workshop for high school computing classes in Years 9-12.
-            Currently, these workshops will be held at UNSW with the aim to teach students basic programming techniques.
-            An Arduino is essentially a small, portable computer the size of a credit card. It can take in inputs,
-            using things like a light sensor, and produce outputs, such as blinking an LED light.
-        </p>
-        <p>This is a hands-on workshop which
-            allows students to learn the basics of computing in a fun, practical way. Students will learn programming
-            basics by programming an Arduino, including:</p>
-        <ul>
-            <li>How to control LEDs</li>
-            <li>How to use the serial communication bus</li>
-            <li>How to use sensors such as photocells</li>
-            <li>How to play music using a buzzer</li>
-        </ul>
-        <p>No assumed knowledge is required for this workshop and equipment is provided by Computing Club.
-        </p>
-     <h3>Bookings &amp; enquiries</h3>
-        <p>To book a workshop for your class, please use the 'Book' buttons below or contact <a href="mailto: team@compclub.com.au">team@compclub.com.au</a>.</p>
-
-        <p>Please contact <a href="mailto: team@compclub.com.au">team@compclub.com.au</a> with any enquiries you may have.
-        Use the table below to see available dates for the workshop. If these dates or times do not suit your school,
-            please contact us via email.</p>
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Location</th>
-            <th>Availability</th>
-        </tr>
-        </thead>
-    <tbody>
-        <tr>
-            <td>Friday 20th September</td>
-            <td>10am - 12pm</td>
-            <td>UNSW</td>
-            <td><a href="mailto:team@compclub.com.au?subject=[CompClub]%20Arduino%20workshops%20-%20Friday%2020th%20September" class="btn btn-success" type="button">Book</a></td>
-        </tr>
-        <tr>
-            <td>Friday 11th October</td>
-            <td>10am - 12pm</td>
-            <td>UNSW</td>
-            <td><a href="mailto:team@compclub.com.au?subject=[CompClub]%20Arduino%20workshops%20-%20Friday%2011th%20October" class="btn btn-success" type="button">Book</a></td>
-        </tr>
-        <tr>
-            <td>Friday 18th October</td>
-            <td>10am - 12pm</td>
-            <td>UNSW</td>
-            <td><a href="mailto:team@compclub.com.au?subject=[CompClub]%20Arduino%20workshops%20-%20Friday%2018th%20October" class="btn btn-success" type="button">Book</a></td>
-        </tr>
-        <tr>
-            <td>Friday 25th October</td>
-            <td>10am - 12pm</td>
-            <td>UNSW</td>
-            <td><a href="mailto:team@compclub.com.au?subject=[CompClub]%20Arduino%20workshops%20-%20Friday%2025th%20October" class="btn btn-success" type="button">Book</a></td>
-        </tr>
-    </tbody>
-
-
-
-</table>
-    </div>
 	{% if size > 0 %}
 		{% for c in courses %}
         {% if not c.passed %}
@@ -86,7 +22,7 @@
                     {% else %}
                         {% if c.passed %}
                             <button class="btn btn-danger" disabled="true">Closed</button>
-                        {% else %}
+                        {% elif c.allow_button %}
                             <a href="/signup?id={{ c.key().id() }}&year={{ year }}&level={{ level }}" class="btn btn-success" type="button">Register</a>
                         {% endif %}
 
