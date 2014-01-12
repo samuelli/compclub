@@ -1,7 +1,7 @@
 import webapp2
 import jinja2
 import os
-from app.models.models import Course, Registration, WinterSchoolFeedback, Subscription
+from app.models.models import Course, Registration, WorkshopFeedback, Subscription
 from google.appengine.ext import db
 from google.appengine.api import users
 from google.appengine.api import mail
@@ -185,7 +185,7 @@ class feedback(webapp2.RequestHandler):
         self.response.out.write(template.render())
 
     def post(self):
-        feedback = WinterSchoolFeedback()
+        feedback = WorkshopFeedback()
         feedback.course = self.request.get('course')
         feedback.aims_module_clear = int(self.request.get('aims_module_clear'))
         feedback.challenging_interesting = int(self.request.get('challenging_interesting'))
@@ -195,7 +195,17 @@ class feedback(webapp2.RequestHandler):
         feedback.best_part = self.request.get('best_part')
         feedback.worst_part = self.request.get('worst_part')
         feedback.other_comments = self.request.get('other_comments')
+        feedback.year = datetime.date.today().year
         feedback.put()
 
         template = jinja_environment.get_template('thanks_feedback.html')
+        self.response.out.write(template.render())
+
+class programs(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('programs.html')
+        self.response.out.write(template.render())
+
+    def post(self):
+        template = jinja_environment.get_template('programs.html')
         self.response.out.write(template.render())

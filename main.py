@@ -32,6 +32,7 @@ app = webapp2.WSGIApplication([
     ('/subscription', main.subscription),
     (r'/unsubscribe/(\d+)', main.unsubscribe),
     ('/unsubscribed', main.unsubscribed),
+    ('/programs', main.programs),
 ], debug=True)
 
 
