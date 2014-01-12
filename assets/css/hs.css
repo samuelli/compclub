@@ -43,6 +43,17 @@ h1, h2, h3, h4, h5, h6 {
 	border-radius: 6px;
 }
 
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.5);
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.carousel-caption a {
+    color:inherit;
+    text-decoration: none;
+}
+
 .mainButtons {
 	padding: 5px 10px;
 }
@@ -99,4 +110,8 @@ form input[type="radio"] {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+strong {
+    font-weight: bold;
 }

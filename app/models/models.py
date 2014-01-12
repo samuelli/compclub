@@ -35,7 +35,7 @@ class Roll(db.Model):
     # Created
     created = db.DateTimeProperty(auto_now_add=True)
 
-class WinterSchoolFeedback(db.Model):
+class WorkshopFeedback(db.Model):
     # Course
     course = db.StringProperty()
     # Feedback
@@ -47,6 +47,7 @@ class WinterSchoolFeedback(db.Model):
     best_part = db.TextProperty()
     worst_part = db.TextProperty()
     other_comments = db.StringProperty()
+    year = db.IntegerProperty()
 
 
 class Subscription(db.Model):

@@ -212,6 +212,7 @@ class update(webapp2.RequestHandler):
         c = Course.get_by_id(int(course))
 
         c.description = self.request.get('desc')
+        c.allow_button = bool(self.request.get('allow_button'))
         c.put()
 
         q = db.GqlQuery("SELECT * FROM Course LIMIT 10")
