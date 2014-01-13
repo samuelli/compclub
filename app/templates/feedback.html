@@ -6,32 +6,35 @@
 
 <div class="container">
 	<div class="well">
-		<form class="form-vertical" action="/feedback" method="post">
+		<form class="form-horizontal" action="/feedback" method="post">
 			<legend>Feedback Form</legend>
-			<fieldset>
-                <label>Name of module?</label>
-                <select required name="course">
-                    <option value="">---------</option>
-                    <!--<option value="intro">Introduction to Programming</option>
-                    <option value="smartphones">Smartphone Sensors</option>
-                    <option value="databases">Relation Database Design and Implementation</option>
-                    <option value="internet">How the Internet works</option>
-                    <option value="practicalprogramming">Practical Programming</option>
-                    <option value="basicweb">Basic Web Design using HTML and CSS</option>
-                    <option value="financial">Overview of Financial Systems</option>
-                    <option value="advancedweb">Advanced web design using Javascript and PHP</option>
-                    <option value="gamemaker">Introduction to Gamemaker</option>
-                    <option value="progcomp">ProgComp for newbies</option>
-                    <option value="sbhs">SBHS Talk - 13th September</option>-->
-                    <option value="advweb">Advanced Web Dev</option>
-                    <option value="arduino">Arduino</option>
-                    <option value="gamemaker">Gamemaker</option>
-                    <option value="unixverse">Beginners' Guide to the UNIXverse</option>
-                    <option value="intro">Introduction to Programming</option>
-                    <option value="introweb">Introduction to Web Dev</option>
-                    <option value="rescuerobots">Rescue Robots</option>
-                </select>
-
+            <div class="form-group">
+                <label class="col-md-3 control-label">Name of module?</label>
+                <div class="col-md-4">
+                    <select required name="course" class="form-control" style="width: 200px">
+                        <option value="">---------</option>
+                        <!--<option value="intro">Introduction to Programming</option>
+                        <option value="smartphones">Smartphone Sensors</option>
+                        <option value="databases">Relation Database Design and Implementation</option>
+                        <option value="internet">How the Internet works</option>
+                        <option value="practicalprogramming">Practical Programming</option>
+                        <option value="basicweb">Basic Web Design using HTML and CSS</option>
+                        <option value="financial">Overview of Financial Systems</option>
+                        <option value="advancedweb">Advanced web design using Javascript and PHP</option>
+                        <option value="gamemaker">Introduction to Gamemaker</option>
+                        <option value="progcomp">ProgComp for newbies</option>
+                        <option value="sbhs">SBHS Talk - 13th September</option>-->
+                        <option value="advweb">Advanced Web Dev</option>
+                        <option value="arduino">Arduino</option>
+                        <option value="gamemaker">Gamemaker</option>
+                        <option value="unixverse">Beginners' Guide to the UNIXverse</option>
+                        <option value="intro">Introduction to Programming</option>
+                        <option value="introweb">Introduction to Web Dev</option>
+                        <option value="rescuerobots">Rescue Robots</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
                 <table style="width: 100%; text-align: center">
                     <thead>
                         <tr>
@@ -92,16 +95,28 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
 
-				<label>The best part of the module:</label>
-                <textarea rows="5" name="best_part" style="width:300px"></textarea>
+            <div class="form-group">
+				<label class="control-label col-md-3">The best part of the module:</label>
+                <div class="col-md-6">
+                    <textarea rows="5" name="best_part" class="form-control" style="width:300px"></textarea>
+                </div>
+            </div>
 
-                <label>The worst part of the module:</label>
-                <textarea rows="5" name="worst_part" style="width:300px"></textarea>
+            <div class="form-group">
+                <label class="control-label col-md-3">The worst part of the module:</label>
+                <div class="col-md-6">
+                    <textarea rows="5" name="worst_part" class="form-control" style="width:300px"></textarea>
+                </div>
+            </div>
 
-                <label>Any other comments or suggestions you would like to make about your experience today:</label>
-                <textarea rows="5" name="other_comments" style="width:300px"></textarea>
-			</fieldset>
+            <div class="form-group">
+                <label class="control-label col-md-3">Any other comments or suggestions you would like to make about your experience today:</label>
+                <div class="col-md-6">
+                    <textarea rows="5" name="other_comments" class="form-control" style="width:300px"></textarea>
+                </div>
+            </div>
 
             <center>
                 <input class="btn btn-primary btn-large" id="submitFeedback" type="submit" value="Submit">
