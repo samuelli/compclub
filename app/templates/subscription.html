@@ -8,24 +8,48 @@
 
 <div class="container">
     <div class="well">
-    <h1>Register for updates</h1>
-    <form class="form-vertical" action="/subscription" method="post">
-        Full name: <input required id="name" type="text" name="name"><br>
-        Email: <input required id="email" type="email" name="email"><br>
-        <label>Subscription Type:</label>
-        <div class="control-group" id="sub_type">
-            <ul style="list-style-type:none">
-                <li><input type="radio" name="sub_type" value="student" checked>Student</li>
-                <li><input type="radio" name="sub_type" value="teacher">Teacher</li>
-                <li><input type="radio" name="sub_type" value="parent">Parent</li>
-            </ul>
+        <div class="page-header">
+            <h1>Register for updates</h1>
         </div>
-        </fieldset>
-        <center>
-            <a class="btn btn-secondary btn-large" href="javascript:history.go(-1)" type="button" style="margin-right: 70px">Back</a>
-                <input class="btn btn-primary btn-large" id="sub_submit" type="submit" value="Subscribe">
-        </center>
-    </form>
+        <form class="form-horizontal" action="/subscription" method="post">
+            <div class="form-group">
+                <label for="inputName" class="col-sm-2 control-label">Full name:</label>
+                <div class="col-sm-4">
+                    <input required id="name" name="name" type="text" class="form-control" placeholder="Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-sm-2 control-label">Email:</label>
+                <div class="col-sm-4">
+                    <input required id="email" name="email" type="email" class="form-control" placeholder="Email Address">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputType" class="col-sm-2 control-label">Subscription Type:</label>
+                <div class="col-sm-4">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="sub_type" id="sub_type1" value="student" checked>Student
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="sub_type" id="sub_type2" value="teacher" checked>Teacher
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="sub_type" id="sub_type3" value="parent" checked>Parent
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center">
+                <a class="btn btn-secondary btn-large" href="javascript:history.go(-1)" type="button" style="margin-right: 70px">Back</a>
+                    <input class="btn btn-primary btn-large" id="sub_submit" type="submit" value="Subscribe">
+            </div>
+        </form>
     </div>
 </div>
 {% endblock %}

@@ -6,44 +6,72 @@
 
 <div class="container">
 	<div class="well">
-		<form class="form-vertical" action="/admin/create" method="post">
-			<legend>Create a new course</legend>
-			<fieldset>
-				<label>Title</label>
-                <input type="text" name="title" maxlength="200">
+		<form class="form-horizontal" action="/admin/create" method="post">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Title</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" name="title" maxlength="200">
+                </div>
+            </div>
 
-                <label>From year</label>
-                <input type="number" name="from_year" min="5" max="12">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">From year</label>
+                <div class="col-sm-2">
+                    <input type="number" class="form-control" name="from_year" min="5" max="12">
+                </div>
+            </div>
 
-                <label>To year</label>
-                <input type="number" name="to_year" min="5" max="12">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">To year</label>
+                <div class="col-sm-2">
+                    <input type="number" class="form-control" name="to_year" min="5" max="12">
+                </div>
+            </div>
 
-                <label>Description</label>
-                <textarea name="description" cols="100" rows="5"></textarea>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Description</label>
+                <div class="col-sm-4">
+                    <textarea name="description" class="form-control" cols="100" rows="5"></textarea>
+                </div>
+            </div>
 
-                <label>Last day for rego</label>
-                <input type="date" name="rego_date">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Last day for rego</label>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" name="rego_date">
+                </div>
+            </div>
 
-                <label>Min level</label>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Min level</label>
+                <div class="col-sm-2">
+                    <select name="minlevel" class="form-control">
+                        <option value="" selected="selected">---------</option>
+                        <option value="1">Beginner</option>
+                        <option value="2">Intermediate</option>
+                        <option value="3">Expert</option>
+                    </select>
+                </div>
+            </div>
 
-                <select name="minlevel">
-                    <option value="" selected="selected">---------</option>
-                    <option value="1">Beginner</option>
-                    <option value="2">Intermediate</option>
-                    <option value="3">Expert</option>
-                </select>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Max level</label>
+                <div class="col-sm-2">
+                    <select name="maxlevel" class="form-control">
+                        <option value="" selected="selected">---------</option>
+                        <option value="1">Beginner</option>
+                        <option value="2">Intermediate</option>
+                        <option value="3">Expert</option>
+                    </select>
+                </div>
+            </div>
 
-                <label>Max level</label>
-
-                <select name="maxlevel">
-                    <option value="" selected="selected">---------</option>
-                    <option value="1">Beginner</option>
-                    <option value="2">Intermediate</option>
-                    <option value="3">Expert</option>
-                </select>
-
-                <label>Allow register button? <input type="checkbox" name="allow_button"></label>
-			</fieldset>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Allow register button?</label>
+                <div class="col-sm-4">
+                    <input type="checkbox" name="allow_button">
+                </div>
+            </div>
 			<center>
 				<a class="btn btn-secondary btn-large" href="javascript:history.go(-1)" type="button" style="margin-right: 70px">Back</a>
 				<input class="btn btn-primary btn-large" type="submit" value="Create course">

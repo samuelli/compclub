@@ -11,7 +11,7 @@
 
             <label>Choose a date</label>
             
-            <select name="date">
+            <select name="date" class="form-control" style="width: 150px">
                 {% for r in rolls %}
                 <option value="{{ r.date.date() }}">{{ r.date.date() }}</option>
                 {% endfor %}
