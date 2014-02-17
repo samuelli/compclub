@@ -181,8 +181,12 @@ class wizard(webapp2.RequestHandler):
 
 class feedback(webapp2.RequestHandler):
     def get(self):
+        q = db.GqlQuery("SELECT * FROM Course")
+        template_values = {
+            'courses': q,
+        }
         template = jinja_environment.get_template('feedback.html')
-        self.response.out.write(template.render())
+        self.response.out.write(template.render(template_values))
 
     def post(self):
         feedback = WorkshopFeedback()

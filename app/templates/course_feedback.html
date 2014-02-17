@@ -1,0 +1,49 @@
+{% extends "index.html" %}
+
+{% block titlecontent %}Feedback{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="well">
+    {% if users.is_current_user_admin() %}
+        {% if size == 0 %}
+            <div class="alert alert-danger">
+                No feedback available :(
+            </div>
+        {% else %}
+        <table class="table table-striped table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th width="10%">Aims of module clear?</th>
+                    <th width="10%">Challenging and interesting?</th>
+                    <th width="10%">Presenter effective?</th>
+                    <th>Best part</th>
+                    <th>Worst part</th>
+                    <th>Other comments</th>
+                    <th width="10%">Overall satisfied?</th>
+                    <th width="10%">Would recommend?</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for f in feedback %}
+                    <tr>
+                        <td>{{ f.year }}</td>
+                        <td>{{ f.aims_module_clear }}</td>
+                        <td>{{ f.challenging_interesting }}</td>
+                        <td>{{ f.presenter_effective }}</td>
+                        <td>{{ f.best_part }} </td>
+                        <td>{{ f.worst_part }}</td>
+                        <td>{{ f.other_comments }}</td>
+                        <td>{{ f.overall_satisfied }}</td>
+                        <td>{{ f.would_recommend }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        {% endif %}
+        </table>
+    {% endif %}
+    </div>
+</div>
+{% endblock %}

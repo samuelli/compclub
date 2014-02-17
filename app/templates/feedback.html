@@ -13,24 +13,9 @@
                 <div class="col-md-4">
                     <select required name="course" class="form-control" style="width: 200px">
                         <option value="">---------</option>
-                        <!--<option value="intro">Introduction to Programming</option>
-                        <option value="smartphones">Smartphone Sensors</option>
-                        <option value="databases">Relation Database Design and Implementation</option>
-                        <option value="internet">How the Internet works</option>
-                        <option value="practicalprogramming">Practical Programming</option>
-                        <option value="basicweb">Basic Web Design using HTML and CSS</option>
-                        <option value="financial">Overview of Financial Systems</option>
-                        <option value="advancedweb">Advanced web design using Javascript and PHP</option>
-                        <option value="gamemaker">Introduction to Gamemaker</option>
-                        <option value="progcomp">ProgComp for newbies</option>
-                        <option value="sbhs">SBHS Talk - 13th September</option>-->
-                        <option value="advweb">Advanced Web Dev</option>
-                        <option value="arduino">Arduino</option>
-                        <option value="gamemaker">Gamemaker</option>
-                        <option value="unixverse">Beginners' Guide to the UNIXverse</option>
-                        <option value="intro">Introduction to Programming</option>
-                        <option value="introweb">Introduction to Web Dev</option>
-                        <option value="rescuerobots">Rescue Robots</option>
+                        {% for c in courses %}
+                            <option value="{{ c.key().id() }}">{{ c.title }}</option>
+                        {% endfor %}
                     </select>
                 </div>
             </div>

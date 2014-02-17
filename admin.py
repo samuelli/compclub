@@ -29,4 +29,5 @@ app = webapp2.WSGIApplication([
     (r'/admin/rollmark/(\d+)', admin.rollmark),
     (r'/admin/rollview/(\d+)', admin.rollview),
     ('/admin/emailing', admin.emailing),
+    (r'/admin/feedback/(\w+)', admin.feedback),
 ], debug=True)

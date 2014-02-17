@@ -86,11 +86,11 @@ class rollmark(webapp2.RequestHandler):
         c = Course.get_by_id(int(course))
         date = datetime.strptime(self.request.get('roll_date'), '%Y-%m-%d')
         present = self.request.get_all("present")
-        r = Roll();
+        r = Roll()
         r.students = present
         r.course_name = c.title
         r.date = date
-        r.put();
+        r.put()
 
         regos = db.GqlQuery("SELECT * FROM Registration WHERE ANCESTOR IS :1", c)
         registrations = [r.full_name for r in regos]
@@ -224,3 +224,17 @@ class update(webapp2.RequestHandler):
 
         template = jinja_environment.get_template('courses.html')
         self.response.out.write(template.render(template_values))
+
+class feedback(webapp2.RequestHandler):
+    def get(self, course):
+        q = db.GqlQuery("SELECT * FROM WorkshopFeedback WHERE course = :1", course)
+
+        template_values = {
+            'feedback': q,
+            'users': users,
+            'size': q.count(),
+        }
+
+        template = jinja_environment.get_template('course_feedback.html')
+        self.response.out.write(template.render(template_values))
+
