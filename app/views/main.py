@@ -85,6 +85,7 @@ class signup(webapp2.RequestHandler):
         r.level = int(self.request.get('level'))
         r.year = int(self.request.get('year'))
         r.gender = self.request.get('gender')
+        r.reason = self.request.get('reason')
         r.put()
 
         # Send an email to them

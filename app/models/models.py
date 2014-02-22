@@ -25,6 +25,8 @@ class Registration(db.Model):
     laptop = db.BooleanProperty()
     year = db.IntegerProperty()
     level = db.IntegerProperty()
+    reason = db.StringProperty()
+
     # Created
     created = db.DateTimeProperty(auto_now_add=True)
 
