@@ -22,7 +22,7 @@
                         <a href="/admin/rollview/{{ c.key().id() }}" class="btn btn-success" type="button">View Roll</a>
                         <a href="/admin/regos/{{ c.key().id() }}" class="btn btn-success" type="button">Display registrations</a>
                         <a href="/admin/feedback/{{ c.key().id() }}" class="btn btn-success" type="button">View Feedback</a>
-                    {% else %}
+                    {% elif c.active %}
                         {% if c.passed %}
                             <button class="btn btn-danger" disabled="true">Closed</button>
                         {% elif c.allow_button %}
@@ -33,8 +33,8 @@
 
 
 				</div>
+                {% if users and users.is_current_user_admin() %}
 				<h2>{{ c.title }}</h2>
-				{% if users and users.is_current_user_admin() %}
                 <form method="POST" action="/admin/update/{{ c.key().id() }}" >
                     <div class="form-group">
                         <textarea class="form-control" name="desc" rows="5" style="width:50%">{{ c.description|safe }}</textarea>
@@ -45,10 +45,16 @@
                         > Allow register button?</input>
                     </div>
                     <div class="form-group">
+                        <input type="checkbox" name="active_button"
+                               {% if c.active %} checked {% endif %}
+                        > Is the course active? (Disabling this checkbox will prevent users from being able to see the course in the listings, as well as preventing the giving of feedback.)</input>
+                    </div>
+                    <div class="form-group">
                         <input class="btn btn-primary" type="submit" value="Save">
                     </div>
                 </form>
-                {% else %}
+                {% elif c.active %}
+				<h2><a href="/courses/{{ c.key().id() }}">{{ c.title }}</a></h2>
                     {{ c.description|safe }}
                 {% endif %}
 			</div>
@@ -60,7 +66,7 @@
 				<div style="float:right; padding: 20px">
                     {% if users and users.is_current_user_admin() %}
                         <a href="/admin/regos/{{ c.key().id() }}" class="btn btn-success" type="button">Display registrations</a>
-                    {% else %}
+                    {% elif c.active %}
                         {% if c.passed %}
                             <button class="btn btn-danger" disabled="true">Closed</button>
                         {% else %}
@@ -70,8 +76,8 @@
 
 
 				</div>
-				<h2>{{ c.title }}</h2>
 				{% if users and users.is_current_user_admin() %}
+				<h2>{{ c.title }}</h2>
                 <form method="POST" action="/admin/update/{{ c.key().id() }}">
                     <div class="form-group">
                         <textarea class="form-control" name="desc" rows="5" style="width:50%">{{ c.description|safe }}</textarea>
@@ -85,7 +91,8 @@
                         <input class="btn btn-primary" type="submit" value="Save">
                     </div>
                 </form>
-                {% else %}
+                {% elif c.active %}
+				<h2><a href="/courses/{{ c.key().id() }}">{{ c.title }}</a></h2>
                     {{ c.description|safe }}
                 {% endif %}
 

@@ -46,6 +46,7 @@ class create(webapp2.RequestHandler):
         c.rego_date = datetime.strptime(self.request.get('rego_date'), '%Y-%m-%d')
         c.minlevel = int(self.request.get('minlevel'))
         c.maxlevel = int(self.request.get('maxlevel'))
+        c.active = True
 
         # allow_button determines whether a 'Register' button should be displayed
         # for that particular course
@@ -213,6 +214,7 @@ class update(webapp2.RequestHandler):
 
         c.description = self.request.get('desc')
         c.allow_button = bool(self.request.get('allow_button'))
+        c.active = bool(self.request.get('active_button'))
         c.put()
 
         q = db.GqlQuery("SELECT * FROM Course LIMIT 10")

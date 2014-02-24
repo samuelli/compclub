@@ -14,7 +14,9 @@
                     <select required name="course" class="form-control" style="width: 200px">
                         <option value="">---------</option>
                         {% for c in courses %}
-                            <option value="{{ c.key().id() }}">{{ c.title }}</option>
+                            {% if c.active %}
+                                <option value="{{ c.key().id() }}">{{ c.title }}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                 </div>
