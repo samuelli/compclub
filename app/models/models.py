@@ -48,7 +48,7 @@ class WorkshopFeedback(db.Model):
     overall_satisfied = db.IntegerProperty()
     best_part = db.TextProperty()
     worst_part = db.TextProperty()
-    other_comments = db.StringProperty()
+    other_comments = db.TextProperty()
     year = db.IntegerProperty()
 
 
