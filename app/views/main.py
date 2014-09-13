@@ -1,7 +1,7 @@
 import webapp2
 import jinja2
 import os
-from app.models.models import Course, Registration, WorkshopFeedback, Subscription
+from app.models.models import Course, Registration, WorkshopFeedback, Subscription, TeacherRegistration
 from google.appengine.ext import db
 from google.appengine.api import users
 from google.appengine.api import mail
@@ -62,6 +62,55 @@ class course(webapp2.RequestHandler):
         template = jinja_environment.get_template('courses.html')
         self.response.out.write(template.render(template_values))
 
+class programs(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('programs.html')
+        self.response.out.write(template.render())
+
+    def post(self):
+        template = jinja_environment.get_template('programs.html')
+        self.response.out.write(template.render())
+
+class signup_teacher(webapp2.RequestHandler):
+    def post(self):
+        course = Course.get_by_id(int(self.request.get('course')))
+        r = TeacherRegistration(parent = course)
+        r.full_name = self.request.get('full_name')
+        r.email = self.request.get('email')
+        r.highschool = self.request.get('highschool')
+        r.service_status = self.request.get('service')
+        r.contact_number = self.request.get('contact_number')
+        r.subjects = self.request.get('subjects')
+        r.reason = self.request.get('reason')
+        r.put()
+
+
+        # Send an email to them
+        message = mail.EmailMessage(sender="UNSW Comp Club <admin@compclub.com.au>",
+                            subject="Thank you for signing up to " + course.title + "!")
+
+        message.to = r.full_name + " <" + r.email + ">"
+        message.bcc = "csesoc.hs.head@cse.unsw.edu.au"
+        message.body = """
+Dear """ + r.full_name + """,
+
+Welcome to UNSW Computing Club! You've successfully registered interest in """ + course.title + """. An email with
+additional information will be sent to you shortly before the module begins. Unfortunately we may not be able to accept everyone, as we only have 20 places per workshop.
+
+Should you have any questions, feel free to contact us at team@compclub.com.au.
+
+UNSW Computing Club
+        """
+
+        message.send()
+
+        template_values = {
+            'email': r.email,
+        }
+        template = jinja_environment.get_template('thanks.html')
+        self.response.out.write(template.render(template_values))
+
+
 class signup(webapp2.RequestHandler):
      def get(self):
         course = Course.get_by_id(int(self.request.get('id')))
@@ -70,7 +119,10 @@ class signup(webapp2.RequestHandler):
             'level': self.request.get('level'),
             'course': course
         }
-        template = jinja_environment.get_template('signup.html')
+        if course.teacher_course:
+            template = jinja_environment.get_template('signup_teacher.html')
+        else:
+            template = jinja_environment.get_template('signup.html')
         self.response.out.write(template.render(template_values))
 
      def post(self):
@@ -93,12 +145,12 @@ class signup(webapp2.RequestHandler):
                             subject="Thank you for signing up to " + course.title + "!")
 
         message.to = r.full_name + " <" + r.email + ">"
-        message.bcc = "champs@compclub.com.au"
+        message.bcc = "csesoc.hs.head@cse.unsw.edu.au"
         message.body = """
 Dear """ + r.full_name + """,
 
-Welcome to UNSW Computing Club! You've successfully signed up to """ + course.title + """. An email with
-additional information will be sent to you shortly before the module begins.
+Welcome to UNSW Computing Club! You've successfully registered interest in """ + course.title + """. An email with
+additional information will be sent to you shortly before the module begins. Unfortunately we may not be able to accept everyone, as we only have 20 places per workshop.
 
 Should you have any questions, feel free to contact us at team@compclub.com.au.
 
@@ -204,13 +256,4 @@ class feedback(webapp2.RequestHandler):
         feedback.put()
 
         template = jinja_environment.get_template('thanks_feedback.html')
-        self.response.out.write(template.render())
-
-class programs(webapp2.RequestHandler):
-    def get(self):
-        template = jinja_environment.get_template('programs.html')
-        self.response.out.write(template.render())
-
-    def post(self):
-        template = jinja_environment.get_template('programs.html')
         self.response.out.write(template.render())

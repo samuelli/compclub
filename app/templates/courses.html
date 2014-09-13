@@ -22,6 +22,7 @@
                         <a href="/admin/rollview/{{ c.key().id() }}" class="btn btn-success" type="button">View Roll</a>
                         <a href="/admin/regos/{{ c.key().id() }}" class="btn btn-success" type="button">Display registrations</a>
                         <a href="/admin/feedback/{{ c.key().id() }}" class="btn btn-success" type="button">View Feedback</a>
+                        <a href="/admin/delete/{{ c.key().id() }}" class="btn btn-danger" type="button">Delete Course</a>
                     {% else %}
                         {% if c.passed %}
                             <button class="btn btn-danger" disabled="true">Closed</button>

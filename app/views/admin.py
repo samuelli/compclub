@@ -55,6 +55,11 @@ class create(webapp2.RequestHandler):
         else:
             c.allow_button = False
 
+        if self.request.get('teacher_course'):
+            c.teacher_course = True
+        else:
+            c.teacher_course = False
+
         c.put()
 
         q = db.GqlQuery("SELECT * FROM Course LIMIT 10")
@@ -66,6 +71,24 @@ class create(webapp2.RequestHandler):
 
         template = jinja_environment.get_template('courses.html')
         self.response.out.write(template.render(template_values))
+
+
+
+class delete(webapp2.RequestHandler):
+    def get(self, id):
+        courseToDelete = Course.get_by_id(int(id))
+        courseToDelete.delete()
+
+        q = db.GqlQuery("SELECT * FROM Course LIMIT 10")
+        template_values = {
+            'courses': q,
+            'size': q.count(),
+            'users': users,
+        }
+
+        template = jinja_environment.get_template('courses.html')
+        self.response.out.write(template.render(template_values))
+
 
 class rollmark(webapp2.RequestHandler):
     def get(self, course):

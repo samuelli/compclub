@@ -1,0 +1,76 @@
+{% extends "index.html" %}
+
+{% block titlecontent %}HS Courses{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div class="well">
+		<form class="form-horizontal" action="/signup_teacher" method="post">
+			<legend>Signup for {{ course.title }}</legend>
+			<input type="hidden" name="course" value="{{ course.key().id() }}" />
+			<div class="alert alert-error" style="display:none" id="regoError">
+				Please fill in all fields.
+			</div>
+            <div class="form-group">
+				<label class="col-sm-3 control-label">Full name</label>
+                <div class="col-sm-3">
+				    <input type="text" class="form-control" name="full_name" maxlength="200">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Email</label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="email" name="email" maxlength="200">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">High School</label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" name="highschool" maxlength="200">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Are you in-service or pre-service?</label>
+                <div class="col-sm-3">
+                    <select name="service" class="form-control">
+                        <option value="in-service" >In-Service</option>
+                        <option value="pre-service" >Pre-Service</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Contact Number</label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" name="contact_number" maxlength="20">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Subjects Taught</label>
+                <div class="col-sm-3">
+                    <textarea class="form-control" name="subjects" rows="5"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Reason</label>
+                <div class="col-sm-3">
+                    <textarea class="form-control" name="reason" rows="5"></textarea>
+                </div>
+            </div>
+
+			<center>
+				<a class="btn btn-secondary btn-large" href="javascript:history.go(-1)" type="button" style="margin-right: 70px">Back</a>
+				<input class="btn btn-primary btn-large" id="submitRego" type="submit" value="I'm done, sign me up!">
+			</center>
+		</form>
+	</div>
+</div>
+
+
+{% endblock %}

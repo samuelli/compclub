@@ -24,6 +24,7 @@ class MainHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', main.main),
     ('/signup', main.signup),
+    ('/signup_teacher', main.signup_teacher),
     ('/about', main.about),
     ('/courses', main.courses),
     (r'/courses/(\d+)', main.course),

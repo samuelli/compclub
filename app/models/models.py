@@ -10,9 +10,22 @@ class Course(db.Model):
     minlevel = db.IntegerProperty()
     maxlevel = db.IntegerProperty()
     allow_button = db.BooleanProperty()
+    teacher_course = db.BooleanProperty()
     # Created
     created = db.DateTimeProperty(auto_now_add=True)
 
+
+class TeacherRegistration(db.Model):
+    full_name = db.StringProperty()
+    email = db.EmailProperty()
+    contact_number = db.StringProperty()
+
+    # Pre-service or in-service teacher?
+    service_status = db.StringProperty()
+
+    highschool = db.StringProperty()
+    subjects_taught = db.StringProperty()
+    reason = db.StringProperty()
 
 # Parent = course
 class Registration(db.Model):
