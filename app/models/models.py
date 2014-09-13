@@ -11,6 +11,7 @@ class Course(db.Model):
     maxlevel = db.IntegerProperty()
     allow_button = db.BooleanProperty()
     teacher_course = db.BooleanProperty()
+    active = db.BooleanProperty()
     # Created
     created = db.DateTimeProperty(auto_now_add=True)
 
