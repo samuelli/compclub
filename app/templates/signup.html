@@ -1,4 +1,14 @@
 {% extends "index.html" %}
+{% block head %}
+    {{ super() }}
+
+
+    <script>
+        $(function() {
+            $('#courseSignupForm').bootstrapValidator();
+        });
+    </script>
+{% endblock head %}
 
 {% block titlecontent %}HS Courses{% endblock %}
 
@@ -6,7 +16,7 @@
 
 <div class="container">
 	<div class="well">
-		<form class="form-horizontal" action="/signup" method="post">
+		<form id="courseSignupForm" class="form-horizontal" action="/signup" method="post">
 			<legend>Signup for {{ course.title }}</legend>
 			<input type="hidden" name="course" value="{{ course.key().id() }}" />
 			<div class="alert alert-error" style="display:none" id="regoError">
@@ -46,8 +56,9 @@
 
             <div class="form-group">
                 <label class="col-sm-3 control-label">What year are you in?</label>
-                <div class="col-sm-1">
-                    <input class="form-control" type="number" name="year" min="5" max="12" value="{{ year }}">
+                <div class="col-sm-2">
+                    <input class="form-control" type="number" name="year" min="5" max="12" value="{{ year }}"
+                         data-bv-notempty="true" data-bv-notempty-message="School year is required">
                 </div>
             </div>
 
