@@ -90,7 +90,8 @@ class signup_teacher(webapp2.RequestHandler):
                             subject="Thank you for signing up to " + course.title + "!")
 
         message.to = r.full_name + " <" + r.email + ">"
-        message.bcc = "csesoc.hs.head@cse.unsw.edu.au"
+        # request to remove hs.head from Vanessa Ung 2014-12-10
+        #message.bcc = "csesoc.hs.head@cse.unsw.edu.au"
         message.body = """
 Dear """ + r.full_name + """,
 
@@ -145,7 +146,8 @@ class signup(webapp2.RequestHandler):
                             subject="Thank you for signing up to " + course.title + "!")
 
         message.to = r.full_name + " <" + r.email + ">"
-        message.bcc = "csesoc.hs.head@cse.unsw.edu.au"
+        # request to remove hs.head from Vanessa Ung 2014-12-10
+        #message.bcc = "csesoc.hs.head@cse.unsw.edu.au"
         message.body = """
 Dear """ + r.full_name + """,
 
